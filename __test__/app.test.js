@@ -26,10 +26,10 @@ describe("GET /api/users/:id", () => {
       });
   });
 
-  test.only("404:should return  an error respond when user id is valid, but does not exist", () => {
+  test("404:should return an error respond when user id is valid, but does not exist", () => {
     return request(app)
       .get("/api/users/64c2489aab8b5fd77884acc1")
-      .expect(404) // SHOULD BE 404
+      .expect(404)
       .then(({ body }) => {
         expect(body.message).toBe("User 64c2489aab8b5fd77884acc1 not found");
       });
