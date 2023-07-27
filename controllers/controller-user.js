@@ -25,7 +25,6 @@ const getUser = asyncHandler(async (req, res) => {
     }
     res.status(200).json(user);
   } catch (err) {
-    res.status(500);
     throw new Error(err.message);
   }
 });
@@ -51,7 +50,6 @@ const updateUser = asyncHandler(async (req, res) => {
     const updatedUser = await User.findById(id);
     req.status(200).json(updatedUser);
   } catch (err) {
-    res.status(500);
     throw new Error(err.message);
   }
 });
@@ -66,7 +64,6 @@ const deleteUser = asyncHandler(async (req, res) => {
     }
     res.status(204).json(user);
   } catch (err) {
-    res.status(500);
     throw new Error(err.messsage);
   }
 });

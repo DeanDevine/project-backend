@@ -8,7 +8,7 @@ const userRouter = require("./routes/router-user");
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 const MONGO_URL = process.env.MONGO_URL;
 
 // MIDDLEWARE
@@ -33,12 +33,14 @@ app.use(errorMiddleware);
 
 mongoose
   .connect(MONGO_URL)
-  .then(() => {
-    console.log("connected to MongoDB (TEST-COLLECTION)");
-    app.listen(PORT, () => {
-      console.log(`listening on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  // .then(() => {
+  //   console.log("connected to MongoDB (TEST-COLLECTION)");
+  //   app.listen(PORT, () => {
+  //     console.log(`listening on port ${PORT}`);
+  //   });
+  // })
+  // .catch((err) => {
+  //   console.log(err);
+  // });
+
+module.exports = app;

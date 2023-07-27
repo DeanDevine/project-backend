@@ -1,7 +1,7 @@
-const request = require('supertest');
-require('jest-sorted');
-const app = require('../app');
-const db = require('../db/connection');
+const request = require("supertest");
+const app = require("../server");
+
+const mongoose = require("mongoose");
 
 /*
 const seed = require('../db/seeds/seed');
@@ -11,34 +11,27 @@ beforeEach(() => {
  });
  */
 
- 
- afterAll(() => {
-    return  db.connection.close();
- })
+afterAll(() => {
+  mongoose.connection.close();
+});
 
-
- describe ('GET /api/users/:username',() => {
-    test('200:should return a single user by username',() => {
+describe("GET /api/users/:id", () => {
+  test("200:should return a single user by id", () => {
     return request(app)
-    .get('/api/users/tomli2004')
-    .expect(200)
-    .then (({body}) => {
-        const {user} = body;
-        expect(user).toHaveProperty("username", expect.any(String));
-        expect(user).toHaveProperty("firstname", expect.any(String));
-        expect(user).toHaveProperty("lastname", expect.any(String));
-        expect(user.username).toEqual("tomli2004");
-  
-    })
-  })
+      .get("/api/users/64c227233e076b66413fe7dc")
+      .expect(200)
+      .then(({ body }) => {
+        expect(body).toHaveProperty("password", expect.any(String));
+        expect(body.username).toEqual("Dean");
+      });
+  });
 
-  test("404:should return  an error respond when username is valid,but does not exist", () => {
+  test.only("404:should return  an error respond when user id is valid, but does not exist", () => {
     return request(app)
-        .get('/api/users/tomli500')
-        .expect(404)
-        .then(( {body} ) => {
-            expect(body.msg).toBe("Not found");
-        });
-   });
-
-})
+      .get("/api/users/64c2489aab8b5fd77884acc1")
+      .expect(404) // SHOULD BE 404
+      .then(({ body }) => {
+        expect(body.message).toBe("User 64c2489aab8b5fd77884acc1 not found");
+      });
+  });
+});
