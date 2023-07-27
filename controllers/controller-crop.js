@@ -28,7 +28,6 @@ const getCrop = asyncHandler(async (req, res) => {
     }
     res.status(200).json(crop);
   } catch (err) {
-    res.status(500);
     throw new Error(err.message);
   }
 });
@@ -58,7 +57,6 @@ const updateCrop = asyncHandler(async (req, res) => {
     const updatedTest = await Crop.findById(id);
     res.status(200).json(updatedTest);
   } catch (err) {
-    res.status(500);
     throw new Error(err.message);
   }
 });
@@ -76,7 +74,6 @@ const deleteCrop = asyncHandler(async (req, res) => {
     }
     res.status(204).json(crop);
   } catch (err) {
-    res.status(500);
     throw new Error(err.message);
   }
 });
