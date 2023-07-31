@@ -2,7 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const ShopItem = require("./models/model-shop-item");
 const User = require("./models/model-user");
-const UserItem = require("./models/model-user-items");
+const UserItem = require("./models/model-user-item");
 
 const MONGO_URL = process.env.MONGO_URL;
 
@@ -117,10 +117,10 @@ const seedUserItems = [
 const seedDB = async () => {
   await User.deleteMany({});
   await User.insertMany(seedUsers);
-  await ShopItem.deleteMany({});
-  await ShopItem.insertMany(seedShopItems);
   await UserItem.deleteMany({});
   await UserItem.insertMany(seedUserItems);
+  await ShopItem.deleteMany({});
+  await ShopItem.insertMany(seedShopItems);
 };
 
 seedDB().then(() => {
