@@ -49,7 +49,7 @@ const updateUser = asyncHandler(async (req, res) => {
       throw new Error(`User ${id} not found`);
     }
     const updatedUser = await User.findById(id);
-    req.status(200).json(updatedUser);
+    res.status(200).json(updatedUser);
   } catch (err) {
     throw new Error(err.message);
   }
@@ -66,6 +66,15 @@ const deleteUser = asyncHandler(async (req, res) => {
     res.status(204).json(user);
   } catch (err) {
     throw new Error(err.messsage);
+  }
+});
+
+const updateUserCharacterImg = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndUpdate(id, req.body)
+  } catch (err) {
+    throw new Error(err.message);
   }
 });
 

@@ -10,14 +10,8 @@ const {
 
 const cropRouter = express.Router();
 
-cropRouter.get("/", getCrops);
+cropRouter.route("/").get(getCrops).post(createCrop);
 
-cropRouter.get("/:id", getCrop);
-
-cropRouter.post("/", createCrop);
-
-cropRouter.patch("/:id", updateCrop);
-
-cropRouter.delete("/:id", deleteCrop);
+cropRouter.route("/:id").get(getCrop).patch(updateCrop).delete(deleteCrop);
 
 module.exports = cropRouter;
