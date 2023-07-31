@@ -24,7 +24,7 @@ describe("GET /api/users/:username", () => {
       .expect(404)
       .then(({ body }) => {
         expect(body.message).toBe(
-          "User username_which_does_not_exist not found"
+          "Error: User username_which_does_not_exist not found"
         );
       });
   });
