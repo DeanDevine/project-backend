@@ -72,7 +72,7 @@ const deleteShopItem = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error(`${id} not found`);
     }
-    res.status(204).json(shopItem);
+    res.status(204).send();
   } catch (err) {
     throw new Error(err.message);
   }

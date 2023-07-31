@@ -1,0 +1,191 @@
+{
+  "GET /api": {
+    "description": "serves up a json representation of all the available endpoints of the api"
+  },
+  "GET /api/users": {
+    "description": "serves an array of all users",
+    "exampleResponse": [
+      {
+        "_id": "64c7bd2dc612cf6fcd492d99",
+        "username": "Dean",
+        "password": "password1",
+        "first_name": "first",
+        "last_name": "last",
+        "character_img": "",
+        "coins": 100
+      },
+      "{...}"
+    ]
+  },
+  "GET /api/users/:id": {
+    "description": "serves an object of a specified user",
+    "exampleResponse": {
+      "_id": "64c7bd2dc612cf6fcd492d9c",
+      "username": "Hannah",
+      "password": "password4",
+      "first_name": "first",
+      "last_name": "last",
+      "character_img": "",
+      "coins": 100
+    }
+  },
+  "POST /api/users": {
+    "description": "posts a new user and serves an object of that user",
+    "exampleRequest": {
+      "username": "String - REQUIRED",
+      "password": "String - REQUIRED",
+      "first_name": "String - REQUIRED",
+      "last_name": "String - REQUIRED",
+      "character_img": "String",
+      "coins": "Number - DEFAULT 100"
+    },
+    "exampleResponse": {
+      "_id": "64c7ef27d6133a2bac8f1d33",
+      "username": "new_user",
+      "password": "password123",
+      "first_name": "first",
+      "last_name": "last",
+      "character_img": "",
+      "coins": 100
+    }
+  },
+  "PATCH /api/users/:id": {
+    "description": "patches a specified user and serves an object of the updated user",
+    "exampleRequest": {
+      "username": "String",
+      "password": "String",
+      "first_name": "String",
+      "last_name": "String",
+      "character_img": "String",
+      "coins": "Number"
+    },
+    "exampleResponse": {
+      "_id": "64c7ef27d6133a2bac8f1d33",
+      "username": "patched_username",
+      "password": "patched_password",
+      "first_name": "first",
+      "last_name": "last",
+      "character_img": "patched_image",
+      "coins": 100
+    }
+  },
+  "DELETE /api/users/:id": {
+    "description": "deletes a specified user and responds with status 204 - No Content"
+  },
+  "GET /api/useritems": {
+    "description": "serves an array of user items",
+    "exampleResponse": [
+      {
+        "_id": "64c7bd2dc612cf6fcd492da0",
+        "item_name": "item name",
+        "description": "item description",
+        "price": 20,
+        "quantity": 2
+      },
+      "{...}"
+    ]
+  },
+  "GET /api/useritems/:id": {
+    "description": "serves an object of a specified user item",
+    "exampleResponse": {
+      "_id": "64c7bd2dc612cf6fcd492da0",
+      "item_name": "item name",
+      "description": "item description",
+      "price": 20,
+      "quantity": 2
+    }
+  },
+  "POST /api/useritems": {
+    "description": "posts a new item to user items and serves an object of that item",
+    "exampleRequest": {
+      "item_name": "String - REQUIRED",
+      "description": "String - REQUIRED",
+      "price": "Number - REQUIRED",
+      "quantity": "Number - DEFAULT 0 - REQUIRED"
+    },
+    "exampleResponse": {
+      "_id": "64c7f62faf6ea105749979d5",
+      "item_name": "new user item",
+      "description": "item description",
+      "price": 10,
+      "quantity": 2
+    }
+  },
+  "PATCH /api/useritems/:id": {
+    "description": "patches a specified user item and serves an object of the updated item",
+    "exampleRequest": {
+      "item_name": "String",
+      "description": "String",
+      "price": "Number",
+      "quantity": "Number"
+    },
+    "exampleResponse": {
+      "_id": "64c7f62faf6ea105749979d5",
+      "item_name": "patched_user_item",
+      "description": "patched_item_description",
+      "price": 10,
+      "quantity": 2
+    }
+  },
+  "DELETE /api/useritems/:id": {
+    "description": "deletes a specified user item and responds with status 204 - No Content"
+  },
+  "GET /api/shopitems": {
+    "description": "serves an array of shop items",
+    "exampleResponse": [
+      {
+        "_id": "64c7bd2dc612cf6fcd492da0",
+        "item_name": "item name",
+        "description": "item description",
+        "price": 40,
+        "quantity": 7
+      },
+      "{...}"
+    ]
+  },
+  "GET /api/shopitems/:id": {
+    "description": "serves an object of a specified shop item",
+    "exampleResponse": {
+      "_id": "64c7bd2dc612cf6fcd492da0",
+      "item_name": "item name",
+      "description": "item description",
+      "price": 40,
+      "quantity": 7
+    }
+  },
+  "POST /api/shopitems": {
+    "description": "posts a new item to shop items and serves an object of that item",
+    "exampleRequest": {
+      "item_name": "String - REQUIRED",
+      "description": "String - REQUIRED",
+      "price": "Number - REQUIRED",
+      "quantity": "Number - DEFAULT 0 - REQUIRED"
+    },
+    "exampleResponse": {
+      "_id": "64c7f62faf6ea105749979d5",
+      "item_name": "new shop item",
+      "description": "item description",
+      "price": 20,
+      "quantity": 4
+    }
+  },
+  "PATCH /api/shopitems/:id": {
+    "description": "patches a specified shop item and serves an object of the updated item",
+    "exampleRequest": {
+      "item_name": "String",
+      "description": "String",
+      "price": "Number",
+      "quantity": "Number"
+    },
+    "exampleResponse": {
+      "_id": "64c7f62faf6ea105749979d5",
+      "item_name": "patched_shop_item",
+      "description": "patched_item_description",
+      "price": 20,
+      "quantity": 3
+    }
+  },
+  "DELETE /api/shopitems/:id": {
+    "description": "deletes a specified shop item and responds with status 204 - No Content"
+  }
+}

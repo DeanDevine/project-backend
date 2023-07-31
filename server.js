@@ -5,7 +5,8 @@ const errorMiddleware = require("./middleware/middleware-error");
 const shopItemRouter = require("./routes/router-shop-item");
 const userRouter = require("./routes/router-user");
 const userItemRouter = require("./routes/router-user-item");
-const cors = require('cors') // npm i cors - NEED TO LOAD DATA FOR FRONT END?
+const cors = require("cors"); // npm i cors - NEED TO LOAD DATA FOR FRONT END?
+const { getApi } = require("./controllers/controller-api");
 
 const app = express();
 
@@ -14,16 +15,19 @@ const MONGO_URL = process.env.MONGO_URL;
 
 // MIDDLEWARE
 
-app.use(cors()) // NEED FOR FRONT END??
+app.use(cors()); // NEED FOR FRONT END??
+
 app.use(express.json());
 
 // ROUTES
+
+app.get("/api", getApi);
 
 app.use("/api/users", userRouter);
 
 app.use("/api/shopitems", shopItemRouter);
 
-app.use('/api/useritems', userItemRouter)
+app.use("/api/useritems", userItemRouter);
 
 app.use(errorMiddleware);
 
