@@ -7,7 +7,7 @@
     "test": "jest",
     "start": "node listen.js",
     "dev": "nodemon listen.js",
-    "seed": "node seeds.js"
+    "seed": "node seed.js"
   },
   "keywords": [],
   "author": "",

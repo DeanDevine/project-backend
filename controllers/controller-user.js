@@ -1,4 +1,4 @@
-const Crop = require("../models/model-crop");
+const Crop = require("../models/model-shop-item");
 const User = require("../models/model-user");
 const asyncHandler = require("express-async-handler");
 
@@ -66,15 +66,6 @@ const deleteUser = asyncHandler(async (req, res) => {
     res.status(204).json(user);
   } catch (err) {
     throw new Error(err.messsage);
-  }
-});
-
-const updateUserCharacterImg = asyncHandler(async (req, res) => {
-  try {
-    const { id } = req.params;
-    const user = await User.findByIdAndUpdate(id, req.body)
-  } catch (err) {
-    throw new Error(err.message);
   }
 });
 

@@ -18,7 +18,7 @@ afterAll(() => {
 describe("GET /api/users/:id", () => {
   test("200:should return a single user by id", () => {
     return request(app)
-      .get("/api/users/64c227233e076b66413fe7dc")
+      .get("/api/users/64c7a3121791fb06ed5b055c")
       .expect(200)
       .then(({ body }) => {
         expect(body).toHaveProperty("password", expect.any(String));

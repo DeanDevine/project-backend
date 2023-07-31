@@ -1,12 +1,12 @@
-const Crop = require("../models/model-crop");
+const ShopItem = require("../models/model-shop-item");
 const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/package/express-async-handler
 
-// GET ALL CROPS
+// GET ALL SHOP ITEMS
 
-const getCrops = asyncHandler(async (req, res) => {
+const getShopItems = asyncHandler(async (req, res) => {
   try {
-    const crops = await Crop.find({});
-    res.status(200).json(crops);
+    const shopItems = await ShopItem.find({});
+    res.status(200).json(shopItems);
   } catch (err) {
     res.status(500);
     throw new Error(err.message); // WITH ERROR MIDDLEWARE
@@ -14,74 +14,76 @@ const getCrops = asyncHandler(async (req, res) => {
   }
 });
 
-// GET CROP BY ID
+// GET ShopItem BY ID
 
-const getCrop = asyncHandler(async (req, res) => {
+const getShopItem = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const crop = await Crop.findById(id);
+    const shopItem = await ShopItem.findById(id);
     // ID NOT IN DATABASE
-    if (!crop) {
+    if (!shopItem) {
       res.status(404);
       throw new Error(`${id} not found`); // WITH ERROR MIDDLEWARE
       // return res.status(404).json({ message: `${id} not found` }); // WITHOUT ERROR MIDDLEWARE
     }
-    res.status(200).json(crop);
+    res.status(200).json(shopItem);
   } catch (err) {
     throw new Error(err.message);
   }
 });
 
-// CREATE NEW CROP
+// CREATE NEW ShopItem
 
-const createCrop = asyncHandler(async (req, res) => {
+const createShopItem = asyncHandler(async (req, res) => {
   try {
-    const crop = await Crop.create(req.body);
-    res.status(201).json(crop);
+    const shopItem = await ShopItem.create(req.body);
+    res.status(201).json(shopItem);
   } catch (err) {
     res.status(500);
     throw new Error(err.message);
   }
 });
 
-// UPDATE CROP BY ID
+// UPDATE ShopItem BY ID
 
-const updateCrop = asyncHandler(async (req, res) => {
+const updateShopItem = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const crop = await Crop.findByIdAndUpdate(id, req.body);
-    if (!crop) {
+    const shopItem = await ShopItem.findByIdAndUpdate(id, req.body);
+    if (!shopItem) {
       res.status(404);
       throw new Error(`${id} not found`);
     }
-    const updatedTest = await Crop.findById(id);
+    const updatedTest = await ShopItem.findById(id);
     res.status(200).json(updatedTest);
   } catch (err) {
     throw new Error(err.message);
   }
 });
 
-// DELETE CROP BY ID
+// DELETE ShopItem BY ID
 
-const deleteCrop = asyncHandler(async (req, res) => {
+const deleteShopItem = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const crop = await Crop.findByIdAndDelete(id);
+    const shopItem = await ShopItem.findByIdAndDelete(id);
     // ID NOT IN DATABASE
-    if (!crop) {
+    if (!shopItem) {
       res.status(404);
       throw new Error(`${id} not found`);
     }
-    res.status(204).json(crop);
+    res.status(204).json(shopItem);
   } catch (err) {
     throw new Error(err.message);
   }
 });
 
+// JOIN ITEM WITH USER ENDPOINT FUNCTIONS
+
 module.exports = {
-  getCrops,
-  getCrop,
-  createCrop,
-  updateCrop,
-  deleteCrop,
+  getShopItems,
+  getShopItem,
+  createShopItem,
+  updateShopItem,
+  deleteShopItem,
 };
