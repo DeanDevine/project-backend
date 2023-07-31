@@ -3,22 +3,14 @@ const app = require("../server");
 
 const mongoose = require("mongoose");
 
-/*
-const seed = require('../db/seeds/seed');
-const data = require('../db/data/test-data');
-beforeEach(() => {
-    return seed(data);
- });
- */
-
 afterAll(() => {
   mongoose.connection.close();
 });
 
-describe("GET /api/users/:id", () => {
-  test("200:should return a single user by id", () => {
+describe("GET /api/users/:username", () => {
+  test("200:should return a single user by username", () => {
     return request(app)
-      .get("/api/users/64c7a3121791fb06ed5b055c")
+      .get("/api/users/Dean")
       .expect(200)
       .then(({ body }) => {
         expect(body).toHaveProperty("password", expect.any(String));
@@ -26,12 +18,32 @@ describe("GET /api/users/:id", () => {
       });
   });
 
-  test("404:should return an error respond when user id is valid, but does not exist", () => {
+  test("404:should return an error respond when username is valid, but does not exist", () => {
     return request(app)
-      .get("/api/users/64c2489aab8b5fd77884acc1")
+      .get("/api/users/username_which_does_not_exist")
       .expect(404)
       .then(({ body }) => {
-        expect(body.message).toBe("User 64c2489aab8b5fd77884acc1 not found");
+        expect(body.message).toBe(
+          "User username_which_does_not_exist not found"
+        );
+      });
+  });
+});
+
+describe("PATCH /api/users/:username", () => {
+  test("200:should update a user by username and respond with that updated user", () => {
+    const updatedUser = {
+      first_name: "Dean",
+      last_name: "Devine",
+    };
+    return request(app)
+      .patch("/api/users/Dean")
+      .send(updatedUser)
+      .expect(200)
+      .then(({ body }) => {
+        expect(body.username).toEqual("Dean");
+        expect(body.first_name).toEqual("Dean");
+        expect(body.last_name).toEqual("Devine");
       });
   });
 });

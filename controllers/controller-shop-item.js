@@ -9,7 +9,7 @@ const getShopItems = asyncHandler(async (req, res) => {
     res.status(200).json(shopItems);
   } catch (err) {
     res.status(500);
-    throw new Error(err.message); // WITH ERROR MIDDLEWARE
+    throw new Error(err); // WITH ERROR MIDDLEWARE
     // res.status(500).json({ message: err.message }); // WITHOUT ERROR MIDDLEWARE
   }
 });
@@ -28,7 +28,7 @@ const getShopItem = asyncHandler(async (req, res) => {
     }
     res.status(200).json(shopItem);
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(err);
   }
 });
 
@@ -40,7 +40,7 @@ const createShopItem = asyncHandler(async (req, res) => {
     res.status(201).json(shopItem);
   } catch (err) {
     res.status(500);
-    throw new Error(err.message);
+    throw new Error(err);
   }
 });
 
@@ -57,7 +57,7 @@ const updateShopItem = asyncHandler(async (req, res) => {
     const updatedTest = await ShopItem.findById(id);
     res.status(200).json(updatedTest);
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(err);
   }
 });
 
@@ -74,7 +74,7 @@ const deleteShopItem = asyncHandler(async (req, res) => {
     }
     res.status(204).send();
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(err);
   }
 });
 
