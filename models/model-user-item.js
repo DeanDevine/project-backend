@@ -18,6 +18,9 @@ const userItemSchema = mongoose.Schema({
     required: true,
     default: 0,
   },
+  username: {
+    type: String,
+  },
 });
 
 const UserItem = mongoose.model("UserItem", userItemSchema);

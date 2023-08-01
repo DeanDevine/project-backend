@@ -18,6 +18,9 @@ const shopItemSchema = mongoose.Schema({
     required: true,
     default: 0,
   },
+  username: {
+    type: String,
+  },
 });
 
 const ShopItem = mongoose.model("ShopItem", shopItemSchema);
