@@ -13,8 +13,8 @@ describe("GET /api/users/:username", () => {
       .get("/api/users/Dean")
       .expect(200)
       .then(({ body }) => {
-        expect(body).toHaveProperty("password", expect.any(String));
-        expect(body.username).toEqual("Dean");
+        expect(body.user).toHaveProperty("password", expect.any(String));
+        expect(body.user.username).toEqual("Dean");
       });
   });
 
@@ -41,9 +41,10 @@ describe("PATCH /api/users/:username", () => {
       .send(updatedUser)
       .expect(200)
       .then(({ body }) => {
-        expect(body.username).toEqual("Dean");
-        expect(body.first_name).toEqual("Dean");
-        expect(body.last_name).toEqual("Devine");
+        const { user } = body;
+        expect(user.username).toEqual("Dean");
+        expect(user.first_name).toEqual("Dean");
+        expect(user.last_name).toEqual("Devine");
       });
   });
 });
