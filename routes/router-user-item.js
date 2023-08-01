@@ -6,6 +6,7 @@ const {
   createUserItem,
   updateUserItem,
   deleteUserItem,
+  getUserItemsByUser,
 } = require("../controllers/controller-user-item");
 
 const userItemRouter = express.Router();
@@ -17,5 +18,7 @@ userItemRouter
   .get(getUserItem)
   .patch(updateUserItem)
   .delete(deleteUserItem);
+
+userItemRouter.route("/users/:username").get(getUserItemsByUser);
 
 module.exports = userItemRouter;
