@@ -4,29 +4,33 @@
   },
   "GET /api/users": {
     "description": "serves an array of all users",
-    "exampleResponse": [
-      {
-        "_id": "64c7bd2dc612cf6fcd492d99",
-        "username": "Dean",
-        "password": "password1",
+    "exampleResponse": {
+      "users": [
+        {
+          "_id": "64c7bd2dc612cf6fcd492d99",
+          "username": "Dean",
+          "password": "password1",
+          "first_name": "first",
+          "last_name": "last",
+          "character_img": "",
+          "coins": 100
+        },
+        "{...}"
+      ]
+    }
+  },
+  "GET /api/users/:username": {
+    "description": "serves an object of a specified user",
+    "exampleResponse": {
+      "user": {
+        "_id": "64c7bd2dc612cf6fcd492d9c",
+        "username": "Hannah",
+        "password": "password4",
         "first_name": "first",
         "last_name": "last",
         "character_img": "",
         "coins": 100
-      },
-      "{...}"
-    ]
-  },
-  "GET /api/users/:id": {
-    "description": "serves an object of a specified user",
-    "exampleResponse": {
-      "_id": "64c7bd2dc612cf6fcd492d9c",
-      "username": "Hannah",
-      "password": "password4",
-      "first_name": "first",
-      "last_name": "last",
-      "character_img": "",
-      "coins": 100
+      }
     }
   },
   "POST /api/users": {
@@ -40,16 +44,18 @@
       "coins": "Number - DEFAULT 100"
     },
     "exampleResponse": {
-      "_id": "64c7ef27d6133a2bac8f1d33",
-      "username": "new_user",
-      "password": "password123",
-      "first_name": "first",
-      "last_name": "last",
-      "character_img": "",
-      "coins": 100
+      "user": {
+        "_id": "64c7ef27d6133a2bac8f1d33",
+        "username": "new_user",
+        "password": "password123",
+        "first_name": "first",
+        "last_name": "last",
+        "character_img": "",
+        "coins": 100
+      }
     }
   },
-  "PATCH /api/users/:id": {
+  "PATCH /api/users/:username": {
     "description": "patches a specified user and serves an object of the updated user",
     "exampleRequest": {
       "username": "String",
@@ -60,39 +66,45 @@
       "coins": "Number"
     },
     "exampleResponse": {
-      "_id": "64c7ef27d6133a2bac8f1d33",
-      "username": "patched_username",
-      "password": "patched_password",
-      "first_name": "first",
-      "last_name": "last",
-      "character_img": "patched_image",
-      "coins": 100
+      "user": {
+        "_id": "64c7ef27d6133a2bac8f1d33",
+        "username": "patched_username",
+        "password": "patched_password",
+        "first_name": "first",
+        "last_name": "last",
+        "character_img": "patched_image",
+        "coins": 100
+      }
     }
   },
-  "DELETE /api/users/:id": {
+  "DELETE /api/users/:username": {
     "description": "deletes a specified user and responds with status 204 - No Content"
   },
   "GET /api/useritems": {
     "description": "serves an array of user items",
-    "exampleResponse": [
-      {
+    "exampleResponse": {
+      "items": [
+        {
+          "_id": "64c7bd2dc612cf6fcd492da0",
+          "item_name": "item name",
+          "description": "item description",
+          "price": 20,
+          "quantity": 2
+        },
+        "{...}"
+      ]
+    }
+  },
+  "GET /api/useritems/:id": {
+    "description": "serves an object of a specified user item",
+    "exampleResponse": {
+      "item": {
         "_id": "64c7bd2dc612cf6fcd492da0",
         "item_name": "item name",
         "description": "item description",
         "price": 20,
         "quantity": 2
-      },
-      "{...}"
-    ]
-  },
-  "GET /api/useritems/:id": {
-    "description": "serves an object of a specified user item",
-    "exampleResponse": {
-      "_id": "64c7bd2dc612cf6fcd492da0",
-      "item_name": "item name",
-      "description": "item description",
-      "price": 20,
-      "quantity": 2
+      }
     }
   },
   "POST /api/useritems": {
@@ -104,11 +116,13 @@
       "quantity": "Number - DEFAULT 0 - REQUIRED"
     },
     "exampleResponse": {
-      "_id": "64c7f62faf6ea105749979d5",
-      "item_name": "new user item",
-      "description": "item description",
-      "price": 10,
-      "quantity": 2
+      "item": {
+        "_id": "64c7f62faf6ea105749979d5",
+        "item_name": "new user item",
+        "description": "item description",
+        "price": 10,
+        "quantity": 2
+      }
     }
   },
   "PATCH /api/useritems/:id": {
@@ -120,11 +134,13 @@
       "quantity": "Number"
     },
     "exampleResponse": {
-      "_id": "64c7f62faf6ea105749979d5",
-      "item_name": "patched_user_item",
-      "description": "patched_item_description",
-      "price": 10,
-      "quantity": 2
+      "item": {
+        "_id": "64c7f62faf6ea105749979d5",
+        "item_name": "patched_user_item",
+        "description": "patched_item_description",
+        "price": 10,
+        "quantity": 2
+      }
     }
   },
   "DELETE /api/useritems/:id": {
@@ -132,25 +148,29 @@
   },
   "GET /api/shopitems": {
     "description": "serves an array of shop items",
-    "exampleResponse": [
-      {
+    "exampleResponse": {
+      "items": [
+        {
+          "_id": "64c7bd2dc612cf6fcd492da0",
+          "item_name": "item name",
+          "description": "item description",
+          "price": 40,
+          "quantity": 7
+        },
+        "{...}"
+      ]
+    }
+  },
+  "GET /api/shopitems/:id": {
+    "description": "serves an object of a specified shop item",
+    "exampleResponse": {
+      "item": {
         "_id": "64c7bd2dc612cf6fcd492da0",
         "item_name": "item name",
         "description": "item description",
         "price": 40,
         "quantity": 7
-      },
-      "{...}"
-    ]
-  },
-  "GET /api/shopitems/:id": {
-    "description": "serves an object of a specified shop item",
-    "exampleResponse": {
-      "_id": "64c7bd2dc612cf6fcd492da0",
-      "item_name": "item name",
-      "description": "item description",
-      "price": 40,
-      "quantity": 7
+      }
     }
   },
   "POST /api/shopitems": {
@@ -162,11 +182,13 @@
       "quantity": "Number - DEFAULT 0 - REQUIRED"
     },
     "exampleResponse": {
-      "_id": "64c7f62faf6ea105749979d5",
-      "item_name": "new shop item",
-      "description": "item description",
-      "price": 20,
-      "quantity": 4
+      "item": {
+        "_id": "64c7f62faf6ea105749979d5",
+        "item_name": "new shop item",
+        "description": "item description",
+        "price": 20,
+        "quantity": 4
+      }
     }
   },
   "PATCH /api/shopitems/:id": {
@@ -178,11 +200,13 @@
       "quantity": "Number"
     },
     "exampleResponse": {
-      "_id": "64c7f62faf6ea105749979d5",
-      "item_name": "patched_shop_item",
-      "description": "patched_item_description",
-      "price": 20,
-      "quantity": 3
+      "item": {
+        "_id": "64c7f62faf6ea105749979d5",
+        "item_name": "patched_shop_item",
+        "description": "patched_item_description",
+        "price": 20,
+        "quantity": 3
+      }
     }
   },
   "DELETE /api/shopitems/:id": {

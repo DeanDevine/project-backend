@@ -7,7 +7,7 @@ const asyncHandler = require("express-async-handler");
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
   try {
-    res.status(200).json(users);
+    res.status(200).json({ users });
   } catch (err) {
     res.status(500);
     throw new Error(err);
@@ -24,7 +24,7 @@ const getUser = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error(`User ${username} not found`);
     }
-    res.status(200).json(user[0]);
+    res.status(200).json({ user: user[0] });
   } catch (err) {
     throw new Error(err);
   }
@@ -33,7 +33,7 @@ const getUser = asyncHandler(async (req, res) => {
 const createUser = asyncHandler(async (req, res) => {
   try {
     const user = await User.create(req.body);
-    res.status(201).json(user);
+    res.status(201).json({ user });
   } catch (err) {
     res.status(500);
     throw new Error(err);
@@ -53,7 +53,7 @@ const updateUser = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error(`User ${username} not found`);
     }
-    res.status(200).json(user);
+    res.status(200).json({ user });
   } catch (err) {
     throw new Error(err);
   }

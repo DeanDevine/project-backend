@@ -6,7 +6,7 @@ const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/
 const getShopItems = asyncHandler(async (req, res) => {
   try {
     const shopItems = await ShopItem.find({});
-    res.status(200).json(shopItems);
+    res.status(200).json({ items: shopItems });
   } catch (err) {
     res.status(500);
     throw new Error(err); // WITH ERROR MIDDLEWARE
@@ -26,7 +26,7 @@ const getShopItem = asyncHandler(async (req, res) => {
       throw new Error(`${id} not found`); // WITH ERROR MIDDLEWARE
       // return res.status(404).json({ message: `${id} not found` }); // WITHOUT ERROR MIDDLEWARE
     }
-    res.status(200).json(shopItem);
+    res.status(200).json({ item: shopItem });
   } catch (err) {
     throw new Error(err);
   }
@@ -37,7 +37,7 @@ const getShopItem = asyncHandler(async (req, res) => {
 const createShopItem = asyncHandler(async (req, res) => {
   try {
     const shopItem = await ShopItem.create(req.body);
-    res.status(201).json(shopItem);
+    res.status(201).json({ item: shopItem });
   } catch (err) {
     res.status(500);
     throw new Error(err);
@@ -54,8 +54,8 @@ const updateShopItem = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error(`${id} not found`);
     }
-    const updatedTest = await ShopItem.findById(id);
-    res.status(200).json(updatedTest);
+    const updatedItem = await ShopItem.findById(id);
+    res.status(200).json({ item: updatedItem });
   } catch (err) {
     throw new Error(err);
   }

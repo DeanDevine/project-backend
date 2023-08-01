@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const ShopItem = require("./models/model-shop-item");
 const User = require("./models/model-user");
 const UserItem = require("./models/model-user-item");
-const seedUsers = require("./Data/users");
-const seedUserItems = require("./Data/usersItems");
-const seedShopItems = require("./Data/shopItems");
+const seedUsers = require("./data/users");
+const seedUserItems = require("./data/usersItems");
+const seedShopItems = require("./data/shopItems");
 
 const MONGO_URL = process.env.MONGO_URL;
 
