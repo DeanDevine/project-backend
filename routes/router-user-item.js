@@ -1,20 +1,21 @@
 const express = require("express");
 
 const {
-  getShopItems,
-  getShopItem,
-  createShopItem,
-  updateShopItem,
-  deleteShopItem,
-} = require("../controllers/controller-shop-item");
+  getUserItems,
+  getUserItem,
+  createUserItem,
+  updateUserItem,
+  deleteUserItem,
+} = require("../controllers/controller-user-item");
 
 const userItemRouter = express.Router();
 
-userItemRouter.route("/").get(getShopItems).post(createShopItem);
+userItemRouter.route("/").get(getUserItems).post(createUserItem);
 
-userItemRouter.route("/:id")
-  .get(getShopItem)
-  .patch(updateShopItem)
-  .delete(deleteShopItem);
+userItemRouter
+  .route("/:id")
+  .get(getUserItem)
+  .patch(updateUserItem)
+  .delete(deleteUserItem);
 
 module.exports = userItemRouter;

@@ -1,13 +1,13 @@
-const ShopItem = require("../models/model-shop-item");
+const UserItem = require("../models/model-user-item");
 const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/package/express-async-handler
 const User = require("../models/model-user");
 
-// GET ALL SHOP ITEMS
+// GET ALL User ITEMS
 
-const getShopItems = asyncHandler(async (req, res) => {
+const getUserItems = asyncHandler(async (req, res) => {
   try {
-    const shopItems = await ShopItem.find({});
-    res.status(200).json({ items: shopItems });
+    const userItems = await UserItem.find({});
+    res.status(200).json({ items: userItems });
   } catch (err) {
     res.status(500);
     throw new Error(err); // WITH ERROR MIDDLEWARE
@@ -15,78 +15,79 @@ const getShopItems = asyncHandler(async (req, res) => {
   }
 });
 
-const getShopItemsByUser = asyncHandler(async (req, res) => {
+const getUserItemsByUser = asyncHandler(async (req, res) => {
   try {
     const { username } = req.params;
     const user = await User.find({ username });
     if (!user.length) {
       throw new Error(`${username} not found`);
     }
-    const shopItems = await ShopItem.find({ username });
-    if (!shopItems.length) {
+    const userItems = await UserItem.find({ username });
+    if (!userItems.length) {
       throw new Error(`ERROR`); // CHANGE ERROR
     }
-    res.status(200).json({ items: shopItems });
+    res.status(200).json({ items: userItems });
   } catch (err) {
     throw new Error(err);
   }
 });
 
-// GET ShopItem BY ID
+// GET UserItem BY ID
 
-const getShopItem = asyncHandler(async (req, res) => {
+const getUserItem = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const shopItem = await ShopItem.findById(id);
+    const userItem = await UserItem.findById(id);
     // ID NOT IN DATABASE
-    if (!shopItem) {
+    if (!userItem) {
       res.status(404);
       throw new Error(`${id} not found`); // WITH ERROR MIDDLEWARE
       // return res.status(404).json({ message: `${id} not found` }); // WITHOUT ERROR MIDDLEWARE
     }
-    res.status(200).json({ item: shopItem });
+    res.status(200).json({ item: userItem });
   } catch (err) {
     throw new Error(err);
-  }tems;
+  }
+  tems;
 });
 
-// CREATE NEW ShopItem
+// CREATE NEW UserItem
 
-const createShopItem = asyncHandler(async (req, res) => {
+const createUserItem = asyncHandler(async (req, res) => {
   try {
-    const shopItem = await ShopItem.create(req.body);
-    res.status(201).json({ item: shopItem });
+    const userItem = await UserItem.create(req.body);
+    res.status(201).json({ item: userItem });
   } catch (err) {
     res.status(500);
     throw new Error(err);
   }
 });
 
-// UPDATE ShopItem BY ID
+// UPDATE UserItem BY ID
 
-const updateShopItem = asyncHandler(async (req, res) => {
+const updateUserItem = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const shopItem = await ShopItem.findByIdAndUpdate(id, req.body);
-    if (!shopItem) {
+    const userItem = await UserItem.findByIdAndUpdate(id, req.body);
+    if (!userItem) {
       res.status(404);
       throw new Error(`${id} not found`);
     }
-    const updatedItem = await ShopItem.findById(id);
+    const updatedItem = await UserItem.findById(id);
     res.status(200).json({ item: updatedItem });
   } catch (err) {
     throw new Error(err);
   }
 });
 
-// DELETE ShopItem BY ID
+// DELETE UserItem BY ID
 
-const deleteShopItem = asyncHandler(async (req, res) => {
+const deleteUserItem = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const shopItem = await ShopItem.findByIdAndDelete(id);
+    const userItem = await UserItem.findByIdAndDelete(id);
     // ID NOT IN DATABASE
-    if (!shopItem) {
+    if (!userItem) {
       res.status(404);
       throw new Error(`${id} not found`);
     }
@@ -99,10 +100,10 @@ const deleteShopItem = asyncHandler(async (req, res) => {
 // JOIN ITEM WITH USER ENDPOINT FUNCTIONS
 
 module.exports = {
-  getShopItems,
-  getShopItemsByUser,
-  getShopItem,
-  createShopItem,
-  updateShopItem,
-  deleteShopItem,
+  getUserItems,
+  getUserItemsByUser,
+  getUserItem,
+  createUserItem,
+  updateUserItem,
+  deleteUserItem,
 };
