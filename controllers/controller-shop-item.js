@@ -1,5 +1,6 @@
 const ShopItem = require("../models/model-shop-item");
 const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/package/express-async-handler
+const User = require("../models/model-user");
 
 // GET ALL SHOP ITEMS
 
@@ -11,6 +12,23 @@ const getShopItems = asyncHandler(async (req, res) => {
     res.status(500);
     throw new Error(err); // WITH ERROR MIDDLEWARE
     // res.status(500).json({ message: err.message }); // WITHOUT ERROR MIDDLEWARE
+  }
+});
+
+const getShopItemsByUser = asyncHandler(async (req, res) => {
+  try {
+    const { username } = req.params;
+    const user = await User.find({ username });
+    if (!user.length) {
+      throw new Error(`${username} not found`);
+    }
+    const shopItems = await ShopItem.find({ username });
+    if (!shopItems.length) {
+      throw new Error(`ERROR`); // CHANGE ERROR
+    }
+    res.status(200).json({ items: shopItems });
+  } catch (err) {
+    throw new Error(err);
   }
 });
 
@@ -82,6 +100,7 @@ const deleteShopItem = asyncHandler(async (req, res) => {
 
 module.exports = {
   getShopItems,
+  getShopItemsByUser,
   getShopItem,
   createShopItem,
   updateShopItem,

@@ -1,3 +1,4 @@
+const ShopItem = require("../models/model-shop-item");
 const Crop = require("../models/model-shop-item");
 const User = require("../models/model-user");
 const asyncHandler = require("express-async-handler");
@@ -33,7 +34,46 @@ const getUser = asyncHandler(async (req, res) => {
 const createUser = asyncHandler(async (req, res) => {
   try {
     const user = await User.create(req.body);
+    const seed = [
+      {
+        item_name: "Lemon",
+        description: "item description 1",
+        price: 1,
+        quantity: 0,
+        username: user.username,
+      },
+      {
+        item_name: "Orange",
+        description: "item description 2",
+        price: 5,
+        quantity: 1,
+        username: user.username,
+      },
+      {
+        item_name: "Apple",
+        description: "item description 3",
+        price: 3,
+        quantity: 2,
+        username: user.username,
+      },
+      {
+        item_name: "Banana",
+        description: "item description 4",
+        price: 2,
+        quantity: 3,
+        username: user.username,
+      },
+      {
+        item_name: "Grapes",
+        description: "item description 5",
+        price: 10,
+        quantity: 7,
+        username: user.username,
+      },
+    ];
+    const userSeed = await ShopItem.insertMany(seed);
     res.status(201).json({ user });
+    return userSeed;
   } catch (err) {
     res.status(500);
     throw new Error(err);
