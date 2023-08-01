@@ -3,18 +3,21 @@ const app = require("../server");
 
 const mongoose = require("mongoose");
 
+
+
 afterAll(() => {
   mongoose.connection.close();
 });
 
 describe("GET /api/users/:username", () => {
-  test("200:should return a single user by username", () => {
+  test.only("200:should return a single user by username", () => {
     return request(app)
       .get("/api/users/Dean")
       .expect(200)
       .then(({ body }) => {
-        expect(body.user).toHaveProperty("password", expect.any(String));
-        expect(body.user.username).toEqual("Dean");
+        const {user} = body
+        expect(user).toHaveProperty("password", expect.any(String));
+        expect(user.username).toEqual("Dean");
       });
   });
 
