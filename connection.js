@@ -11,6 +11,8 @@ if (!process.env.MONGO_URL) {
 
 const {MONGO_URL} = process.env;
 
+console.log(MONGO_URL)
+
 
 ///mongoose.connect(DATABASE_URL,{ dbName: 'testdb',useNewUrlParser: true, useUnifiedTopology: true })
 
