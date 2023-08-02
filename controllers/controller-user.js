@@ -71,9 +71,9 @@ const createUser = asyncHandler(async (req, res) => {
         username: user.username,
       },
     ];
-    const userSeed = await ShopItem.insertMany(seed);
+    await ShopItem.insertMany(seed);
     res.status(201).json({ user });
-    return userSeed;
+    
   } catch (err) {
     res.status(500);
     throw new Error(err);
@@ -99,7 +99,7 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
-const deleteUser = asyncHandler(async (req, res) => {
+const deleteUser = asyncHandler(async (req, res) => {  
   try {
     const { username } = req.params;
     const user = await User.findOneAndDelete({ username });
@@ -107,6 +107,7 @@ const deleteUser = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error(`User ${username} not found`);
     }
+    await ShopItem.deleteMany({username});
     res.status(204).send();
   } catch (err) {
     throw new Error(err);
