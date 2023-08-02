@@ -1,7 +1,6 @@
-const ShopItem = require("../models/model-shop-item");
-const Crop = require("../models/model-shop-item");
+const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/package/express-async-handler
 const User = require("../models/model-user");
-const asyncHandler = require("express-async-handler");
+const ShopItem = require("../models/model-shop-item");
 
 // GET ALL USERS
 
@@ -15,7 +14,7 @@ const getUsers = asyncHandler(async (req, res) => {
   }
 });
 
-// GET USER BY ID // OR USERNAME
+// GET USER BY USERNAME
 
 const getUser = asyncHandler(async (req, res) => {
   try {
@@ -30,6 +29,8 @@ const getUser = asyncHandler(async (req, res) => {
     throw new Error(err);
   }
 });
+
+// POST NEW USER
 
 const createUser = asyncHandler(async (req, res) => {
   try {
@@ -73,18 +74,19 @@ const createUser = asyncHandler(async (req, res) => {
     ];
     await ShopItem.insertMany(seed);
     res.status(201).json({ user });
-    
   } catch (err) {
     res.status(500);
     throw new Error(err);
   }
 });
 
+// PATCH USER BY USERNAME
+
 const updateUser = asyncHandler(async (req, res) => {
   try {
     const { username } = req.params;
     const body = req.body;
-     const user = await User.findOneAndUpdate(
+    const user = await User.findOneAndUpdate(
       { username },
       { $set: body },
       { new: true }
@@ -99,7 +101,9 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
-const deleteUser = asyncHandler(async (req, res) => {  
+// DELETE USER BY USERNAME
+
+const deleteUser = asyncHandler(async (req, res) => {
   try {
     const { username } = req.params;
     const user = await User.findOneAndDelete({ username });
@@ -107,7 +111,7 @@ const deleteUser = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error(`User ${username} not found`);
     }
-    await ShopItem.deleteMany({username});
+    await ShopItem.deleteMany({ username });
     res.status(204).send();
   } catch (err) {
     throw new Error(err);

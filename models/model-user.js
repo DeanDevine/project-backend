@@ -22,8 +22,8 @@ const userSchema = mongoose.Schema({
   },
   coins: {
     type: Number,
-    default: 100
-  }
+    default: 100,
+  },
 });
 
 const User = mongoose.model("User", userSchema);

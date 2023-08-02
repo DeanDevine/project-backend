@@ -20,6 +20,7 @@ const shopItemSchema = mongoose.Schema({
   },
   username: {
     type: String,
+    required: true,
   },
 });
 

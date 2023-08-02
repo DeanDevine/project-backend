@@ -1,19 +1,16 @@
 const request = require("supertest");
 const app = require("../server");
-
-//const mongoose = require("mongoose");
-
-const mongoose = require("../connection.js");
 const seed = require("../seed.js");
+const mongoose = require("../connection.js");
 
-const data = require("../data/test/index.js"); //Import the test data
+const testData = require("../data/test/index.js");
 
 beforeEach(() => {
-  return seed(data);
+  return seed(testData);
 });
 
 afterAll(() => {
-  return mongoose.connection.close();
+  mongoose.connection.close();
 });
 
 describe("GET /api/users", () => {
@@ -128,7 +125,7 @@ describe("GET /api/useritems", () => {
           expect(item).toHaveProperty("description", expect.any(String));
           expect(item).toHaveProperty("price", expect.any(Number));
           expect(item).toHaveProperty("quantity", expect.any(Number));
-          // expect(item).toHaveProperty("username", expect.any(String)); // MAKE REQUIRED FIELD?
+          expect(item).toHaveProperty("username", expect.any(String));
         });
       });
   });
@@ -141,7 +138,7 @@ describe("GET /api/useritems/users/:username", () => {
       .expect(200)
       .then(({ body }) => {
         const { items } = body;
-        // expect(items).toHaveLength(5);
+        expect(items).toHaveLength(5);
         items.forEach((item) => {
           expect(item).toHaveProperty("item_name", expect.any(String));
           expect(item).toHaveProperty("description", expect.any(String));
@@ -176,6 +173,7 @@ describe("POST /api/useritems", () => {
       description: "test_description",
       price: 10,
       quantity: 20,
+      username: "test_user",
     };
     return request(app)
       .post("/api/useritems")
@@ -187,6 +185,7 @@ describe("POST /api/useritems", () => {
         expect(item.description).toEqual("test_description");
         expect(item.price).toBe(10);
         expect(item.quantity).toBe(20);
+        expect(item.username).toEqual("test_user");
       });
   });
 });

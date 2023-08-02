@@ -1,8 +1,8 @@
-const UserItem = require("../models/model-user-item");
 const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/package/express-async-handler
+const UserItem = require("../models/model-user-item");
 const User = require("../models/model-user");
 
-// GET ALL User ITEMS
+// GET ALL USER ITEMS
 
 const getUserItems = asyncHandler(async (req, res) => {
   try {
@@ -14,6 +14,8 @@ const getUserItems = asyncHandler(async (req, res) => {
     // res.status(500).json({ message: err.message }); // WITHOUT ERROR MIDDLEWARE
   }
 });
+
+// GET ALL USER ITEMS BY USERNAME
 
 const getUserItemsByUser = asyncHandler(async (req, res) => {
   try {
@@ -32,17 +34,15 @@ const getUserItemsByUser = asyncHandler(async (req, res) => {
   }
 });
 
-// GET UserItem BY ID
+// GET USER ITEM BY ITEM ID
 
 const getUserItem = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
     const userItem = await UserItem.findById(id);
-    // ID NOT IN DATABASE
     if (!userItem) {
       res.status(404);
-      throw new Error(`${id} not found`); // WITH ERROR MIDDLEWARE
-      // return res.status(404).json({ message: `${id} not found` }); // WITHOUT ERROR MIDDLEWARE
+      throw new Error(`${id} not found`);
     }
     res.status(200).json({ item: userItem });
   } catch (err) {
@@ -51,7 +51,7 @@ const getUserItem = asyncHandler(async (req, res) => {
   tems;
 });
 
-// CREATE NEW UserItem
+// POST NEW USER ITEM
 
 const createUserItem = asyncHandler(async (req, res) => {
   try {
@@ -63,7 +63,7 @@ const createUserItem = asyncHandler(async (req, res) => {
   }
 });
 
-// UPDATE UserItem BY ID
+// PATCH USER ITEM BY ITEM ID
 
 const updateUserItem = asyncHandler(async (req, res) => {
   try {
@@ -80,13 +80,12 @@ const updateUserItem = asyncHandler(async (req, res) => {
   }
 });
 
-// DELETE UserItem BY ID
+// DELETE USER ITEM BY ITEM ID
 
 const deleteUserItem = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
     const userItem = await UserItem.findByIdAndDelete(id);
-    // ID NOT IN DATABASE
     if (!userItem) {
       res.status(404);
       throw new Error(`${id} not found`);
@@ -96,8 +95,6 @@ const deleteUserItem = asyncHandler(async (req, res) => {
     throw new Error(err);
   }
 });
-
-// JOIN ITEM WITH USER ENDPOINT FUNCTIONS
 
 module.exports = {
   getUserItems,

@@ -20,6 +20,7 @@ const userItemSchema = mongoose.Schema({
   },
   username: {
     type: String,
+    required: true,
   },
 });
 

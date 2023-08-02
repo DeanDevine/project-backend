@@ -1,5 +1,5 @@
-const ShopItem = require("../models/model-shop-item");
 const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/package/express-async-handler
+const ShopItem = require("../models/model-shop-item");
 const User = require("../models/model-user");
 
 // GET ALL SHOP ITEMS
@@ -14,6 +14,8 @@ const getShopItems = asyncHandler(async (req, res) => {
     // res.status(500).json({ message: err.message }); // WITHOUT ERROR MIDDLEWARE
   }
 });
+
+// GET SHOP ITEMS BY USERNAME
 
 const getShopItemsByUser = asyncHandler(async (req, res) => {
   try {
@@ -32,25 +34,23 @@ const getShopItemsByUser = asyncHandler(async (req, res) => {
   }
 });
 
-// GET ShopItem BY ID
+// GET SHOP ITEM BY ITEM ID
 
 const getShopItem = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
     const shopItem = await ShopItem.findById(id);
-    // ID NOT IN DATABASE
     if (!shopItem) {
       res.status(404);
-      throw new Error(`${id} not found`); // WITH ERROR MIDDLEWARE
-      // return res.status(404).json({ message: `${id} not found` }); // WITHOUT ERROR MIDDLEWARE
+      throw new Error(`${id} not found`);
     }
     res.status(200).json({ item: shopItem });
   } catch (err) {
     throw new Error(err);
-  }tems;
+  }
 });
 
-// CREATE NEW ShopItem
+// POST NEW SHOP ITEM
 
 const createShopItem = asyncHandler(async (req, res) => {
   try {
@@ -62,7 +62,7 @@ const createShopItem = asyncHandler(async (req, res) => {
   }
 });
 
-// UPDATE ShopItem BY ID
+// PATCH SHOP ITEM BY ITEM ID
 
 const updateShopItem = asyncHandler(async (req, res) => {
   try {
@@ -79,13 +79,12 @@ const updateShopItem = asyncHandler(async (req, res) => {
   }
 });
 
-// DELETE ShopItem BY ID
+// DELETE SHOP ITEM BY ITEM ID
 
 const deleteShopItem = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
     const shopItem = await ShopItem.findByIdAndDelete(id);
-    // ID NOT IN DATABASE
     if (!shopItem) {
       res.status(404);
       throw new Error(`${id} not found`);
@@ -95,8 +94,6 @@ const deleteShopItem = asyncHandler(async (req, res) => {
     throw new Error(err);
   }
 });
-
-// JOIN ITEM WITH USER ENDPOINT FUNCTIONS
 
 module.exports = {
   getShopItems,

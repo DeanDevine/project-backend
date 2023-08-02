@@ -176,4 +176,4 @@ const seedShopItems = [
   },
 ];
 
-  module.exports = seedShopItems
+module.exports = seedShopItems;

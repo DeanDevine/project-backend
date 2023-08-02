@@ -3,7 +3,7 @@
     "description": "serves up a json representation of all the available endpoints of the api"
   },
   "GET /api/users": {
-    "description": "serves an array of all users",
+    "description": "serves an array of all users in the database",
     "exampleResponse": {
       "users": [
         {
@@ -20,7 +20,7 @@
     }
   },
   "GET /api/users/:username": {
-    "description": "serves an object of a specified user",
+    "description": "serves an object of a user specified by username",
     "exampleResponse": {
       "user": {
         "_id": "64c7bd2dc612cf6fcd492d9c",
@@ -56,7 +56,7 @@
     }
   },
   "PATCH /api/users/:username": {
-    "description": "patches a specified user and serves an object of the updated user",
+    "description": "patches a user specified by username and serves an object of the updated user",
     "exampleRequest": {
       "username": "String",
       "password": "String",
@@ -78,10 +78,10 @@
     }
   },
   "DELETE /api/users/:username": {
-    "description": "deletes a specified user and responds with status 204 - No Content"
+    "description": "deletes a user specified by username and responds with status 204 - No Content"
   },
   "GET /api/useritems": {
-    "description": "serves an array of user items",
+    "description": "serves an array of all user items for all users in the database",
     "exampleResponse": {
       "items": [
         {
@@ -89,21 +89,55 @@
           "item_name": "item name",
           "description": "item description",
           "price": 20,
-          "quantity": 2
+          "quantity": 2,
+          "username": "Hannah"
+        },
+        "{...}"
+      ]
+    }
+  },
+  "GET /api/useritems/users/:username": {
+    "description": "serves an array of all user items for a user specified by username",
+    "exampleResponse": {
+      "items": [
+        {
+          "_id": "64ca50a0ad37cc4ec5e2d37c",
+          "item_name": "item name 1",
+          "description": "item description 1",
+          "price": 11,
+          "quantity": 6,
+          "username": "Hannah"
+        },
+        {
+          "_id": "64ca50a0ad37cc4ec5e2d37d",
+          "item_name": "item name 2",
+          "description": "item description 2",
+          "price": 30,
+          "quantity": 5,
+          "username": "Hannah"
+        },
+        {
+          "_id": "64ca50a0ad37cc4ec5e2d37e",
+          "item_name": "item name 3",
+          "description": "item description 3",
+          "price": 5,
+          "quantity": 10,
+          "username": "Hannah"
         },
         "{...}"
       ]
     }
   },
   "GET /api/useritems/:id": {
-    "description": "serves an object of a specified user item",
+    "description": "serves an object of a user item specified by item _id",
     "exampleResponse": {
       "item": {
         "_id": "64c7bd2dc612cf6fcd492da0",
         "item_name": "item name",
         "description": "item description",
         "price": 20,
-        "quantity": 2
+        "quantity": 2,
+        "username": "Hannah"
       }
     }
   },
@@ -113,7 +147,8 @@
       "item_name": "String - REQUIRED",
       "description": "String - REQUIRED",
       "price": "Number - REQUIRED",
-      "quantity": "Number - DEFAULT 0 - REQUIRED"
+      "quantity": "Number - DEFAULT 0 - REQUIRED",
+      "username": "String - REQUIRED"
     },
     "exampleResponse": {
       "item": {
@@ -121,17 +156,19 @@
         "item_name": "new user item",
         "description": "item description",
         "price": 10,
-        "quantity": 2
+        "quantity": 2,
+        "username": "Lucy"
       }
     }
   },
   "PATCH /api/useritems/:id": {
-    "description": "patches a specified user item and serves an object of the updated item",
+    "description": "patches a user item specified by item _id and serves an object of the updated item",
     "exampleRequest": {
       "item_name": "String",
       "description": "String",
       "price": "Number",
-      "quantity": "Number"
+      "quantity": "Number",
+      "username": "String"
     },
     "exampleResponse": {
       "item": {
@@ -139,15 +176,16 @@
         "item_name": "patched_user_item",
         "description": "patched_item_description",
         "price": 10,
-        "quantity": 2
+        "quantity": 2,
+        "username": "Lucy"
       }
     }
   },
   "DELETE /api/useritems/:id": {
-    "description": "deletes a specified user item and responds with status 204 - No Content"
+    "description": "deletes an item specified by item _id and responds with status 204 - No Content"
   },
   "GET /api/shopitems": {
-    "description": "serves an array of shop items",
+    "description": "serves an array of all shop items for all users in the database",
     "exampleResponse": {
       "items": [
         {
@@ -161,15 +199,48 @@
       ]
     }
   },
+  "GET /api/shopitems/users/:username": {
+    "description": "serves an array of all shop items for a user specified by username",
+    "exampleResponse": {
+      "items": [
+        {
+          "_id": "64ca50a0ad37cc4ec5e2d37f",
+          "item_name": "item name 1",
+          "description": "item description 1",
+          "price": 20,
+          "quantity": 2,
+          "username": "Lucy"
+        },
+        {
+          "_id": "64ca50a0ad37cc4ec5e2d37g",
+          "item_name": "item name 2",
+          "description": "item description 2",
+          "price": 10,
+          "quantity": 5,
+          "username": "Lucy"
+        },
+        {
+          "_id": "64ca50a0ad37cc4ec5e2d37h",
+          "item_name": "item name 3",
+          "description": "item description 3",
+          "price": 40,
+          "quantity": 4,
+          "username": "Lucy"
+        },
+        "{...}"
+      ]
+    }
+  },
   "GET /api/shopitems/:id": {
-    "description": "serves an object of a specified shop item",
+    "description": "serves an object of a shop item specified by item _id",
     "exampleResponse": {
       "item": {
         "_id": "64c7bd2dc612cf6fcd492da0",
         "item_name": "item name",
         "description": "item description",
         "price": 40,
-        "quantity": 7
+        "quantity": 7,
+        "username": "Hannah"
       }
     }
   },
@@ -179,7 +250,8 @@
       "item_name": "String - REQUIRED",
       "description": "String - REQUIRED",
       "price": "Number - REQUIRED",
-      "quantity": "Number - DEFAULT 0 - REQUIRED"
+      "quantity": "Number - DEFAULT 0 - REQUIRED",
+      "username": "String - REQUIRED"
     },
     "exampleResponse": {
       "item": {
@@ -187,17 +259,19 @@
         "item_name": "new shop item",
         "description": "item description",
         "price": 20,
-        "quantity": 4
+        "quantity": 4,
+        "username": "Lucy"
       }
     }
   },
   "PATCH /api/shopitems/:id": {
-    "description": "patches a specified shop item and serves an object of the updated item",
+    "description": "patches a shop item specified by item _id and serves an object of the updated item",
     "exampleRequest": {
       "item_name": "String",
       "description": "String",
       "price": "Number",
-      "quantity": "Number"
+      "quantity": "Number",
+      "username": "String"
     },
     "exampleResponse": {
       "item": {
@@ -205,11 +279,12 @@
         "item_name": "patched_shop_item",
         "description": "patched_item_description",
         "price": 20,
-        "quantity": 3
+        "quantity": 3,
+        "username": "Lucy"
       }
     }
   },
   "DELETE /api/shopitems/:id": {
-    "description": "deletes a specified shop item and responds with status 204 - No Content"
+    "description": "deletes a shop item specified by item _id and responds with status 204 - No Content"
   }
 }

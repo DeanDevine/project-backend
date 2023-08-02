@@ -1,30 +1,20 @@
-const ENV = process.env.NODE_ENV || 'development';
 const mongoose = require("mongoose");
+const ENV = process.env.NODE_ENV || "development";
 
-require('dotenv').config({
+require("dotenv").config({
   path: `${__dirname}/.env.${ENV}`,
 });
 
 if (!process.env.MONGO_URL) {
-    throw new Error('MONGO_URL not set');
-} 
+  throw new Error("MONGO_URL not set");
+}
 
-const {MONGO_URL} = process.env;
+const { MONGO_URL } = process.env;
 
-console.log(MONGO_URL)
+console.log("URL:", MONGO_URL);
 
-
-///mongoose.connect(DATABASE_URL,{ dbName: 'testdb',useNewUrlParser: true, useUnifiedTopology: true })
-
-mongoose.connect(MONGO_URL)
-.catch((err) => { console.error(err); });
-
+mongoose.connect(MONGO_URL).catch((err) => {
+  console.error(err);
+});
 
 module.exports = mongoose;
-
-
-
-
-//module.exports = MONGO_URL;
-
-

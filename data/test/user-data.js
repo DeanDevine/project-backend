@@ -31,4 +31,4 @@ const seedUsers = [
   },
 ];
 
-  module.exports = seedUsers
+module.exports = seedUsers;

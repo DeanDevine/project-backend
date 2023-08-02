@@ -175,5 +175,5 @@ const seedUserItems = [
     username: "Lucy",
   },
 ];
-  
-  module.exports = seedUserItems
+
+module.exports = seedUserItems;
