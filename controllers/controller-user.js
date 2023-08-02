@@ -84,7 +84,7 @@ const updateUser = asyncHandler(async (req, res) => {
   try {
     const { username } = req.params;
     const body = req.body;
-    const user = await User.findOneAndUpdate(
+     const user = await User.findOneAndUpdate(
       { username },
       { $set: body },
       { new: true }

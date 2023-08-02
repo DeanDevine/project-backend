@@ -1,35 +1,25 @@
-//require("dotenv").config();
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
+
+const mongoose = require("./connection.js")
+
 const ShopItem = require("./models/model-shop-item");
 const User = require("./models/model-user");
 const UserItem = require("./models/model-user-item");
-const seedUsers = require("./data/users");
-const seedUserItems = require("./data/usersItems");
-const seedShopItems = require("./data/shopItems");
 
+/*
+const seedUsers = require("./data/test/users");
+const seedUserItems = require("./data/test/usersItems");
+const seedShopItems = require("./data/test/shopItems");
+*/
 
+// const MONGO_URL = require("./connection.js")  //Check Which MONGO_URL should be get, test or development or  production
 
-const ENV = process.env.NODE_ENV || 'test';
-
-require('dotenv').config({
-  path: `${__dirname}/.env.${ENV}`,
-});
-
-console.log(`${__dirname}`)
-
-if (!process.env.MONGO_URL) {
-    throw new Error('MONGO_URL not set');
-} 
-
-const {MONGO_URL} = process.env;
-
-console.log(MONGO_URL
-)
-
-
-return
 
 //const MONGO_URL = process.env.MONGO_URL;
+
+//console.log("Show {seed.js-} MONGO_URL---->",MONGO_URL)
+
+/*
 mongoose
   .connect(MONGO_URL)
   .then(() => {
@@ -38,17 +28,62 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+*/
 
-const seedDB = async () => {
-  await User.deleteMany({});
-  await User.insertMany(seedUsers);
-  await UserItem.deleteMany({});
-  await UserItem.insertMany(seedUserItems);
-  await ShopItem.deleteMany({});
-  await ShopItem.insertMany(seedShopItems);
-};
+console.log(process.env.NODE_ENV);
 
-seedDB().then(() => {
-  console.log("Database Seeded");
-  mongoose.connection.close();
+/*
+  mongoose
+.connect(MONGO_URL)
+.then(() => {
+  console.log("Seeding Database...");
+})
+.catch((err) => {
+  console.log(err);
 });
+*/
+
+
+const seed = ({seedUsers,seedUserItems,seedShopItems }) => {
+   return  User.deleteMany({})
+   .then (() => {
+     return User.insertMany(seedUsers);
+   })
+   .then (() => {
+     return  UserItem.deleteMany({});
+   })
+   .then (() => {
+    return UserItem.insertMany(seedUserItems);
+   })
+   .then (() => {
+     return ShopItem.deleteMany({});
+   })
+   .then (() => {
+     return ShopItem.insertMany(seedShopItems);
+   })
+
+
+ /*
+  const seedDB = async () => {
+    await User.deleteMany({});
+    await User.insertMany(seedUsers);
+    await UserItem.deleteMany({});
+    await UserItem.insertMany(seedUserItems);
+    await ShopItem.deleteMany({});
+    await ShopItem.insertMany(seedShopItems);
+  };
+  
+  seedDB();
+
+  
+  seedDB().then(() => {
+    console.log("Database Seeded");
+    mongoose.connection.close();
+
+  });
+*/
+
+
+}
+
+module.exports = seed;

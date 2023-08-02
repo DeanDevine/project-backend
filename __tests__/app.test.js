@@ -1,20 +1,21 @@
 const request = require("supertest");
 const app = require("../server");
 
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
+
+const mongoose = require("../connection.js")
+const seed = require('../seed.js');
+
+const data = require("../data/test/index.js");   //Import the test data
 
 
-const seed = require('../db/seeds/seed');
-const data = require('../db/data/test-data');
 beforeEach(() => {
-    return seed(data);
+   return seed(data);
  });
+
  
-
-
-
 afterAll(() => {
-  mongoose.connection.close();
+  return mongoose.connection.close();
 });
 
 describe ('POST /api/users',() => {
@@ -40,15 +41,15 @@ describe ('PATCH /api/users/:username',() => {
   test ('201:should return a updated user', () => {
       const updatedUser = {password:"cpass001"};
       return request(app)
-      .patch('/api/users/username_test')
+      .patch('/api/users/Steven')
       .send(updatedUser)
       .expect(200)
       .then (({body}) => {
           const {user} = body;
-          expect(user.username).toEqual("username_test");
+          expect(user.username).toEqual("Steven");
           expect(user.password).toEqual("cpass001");
-          expect(user.first_name).toEqual("test");
-          expect(user.last_name).toEqual("user");
+          expect(user.first_name).toEqual("first");
+          expect(user.last_name).toEqual("last");
           expect(user.coins).toEqual(100);
       })
   });
@@ -73,7 +74,7 @@ describe ("GET /api/users", () => {
   });
 })
 
-describe("GET /api/users/:username", () => {
+describe ("GET /api/users/:username", () => {
   test ("200:should return a single user by username", () => {
     return request(app)
       .get("/api/users/Dean")
