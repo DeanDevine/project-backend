@@ -25,7 +25,12 @@ const getUserItemsByUser = asyncHandler(async (req, res) => {
     if (!user.length) {
       throw new Error(`${username} not found`);
     }
-    const userItems = await UserItem.find({ username, item_type });
+    let userItems;
+    if (item_type) {
+      userItems = await UserItem.find({ username, item_type });
+    } else {
+      userItems = await UserItem.find({ username });
+    }
     if (!userItems.length) {
       throw new Error(`ERROR`); // CHANGE ERROR
     }
@@ -49,7 +54,6 @@ const getUserItem = asyncHandler(async (req, res) => {
   } catch (err) {
     throw new Error(err);
   }
-  tems;
 });
 
 // POST NEW USER ITEM
