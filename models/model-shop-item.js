@@ -23,11 +23,20 @@ const shopItemSchema = mongoose.Schema({
     required: true,
   },
   item_img: {
-    type: String
+    type: String,
   },
   item_type: {
     type: String,
-  }
+  },
+  stage_1_img: {
+    type: String
+  },
+  stage_2_img: {
+    type: String,
+  },
+  stage_3_img: {
+    type: String,
+  },
 });
 
 const ShopItem = mongoose.model("ShopItem", shopItemSchema);

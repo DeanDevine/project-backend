@@ -28,6 +28,15 @@ const userItemSchema = mongoose.Schema({
   item_type: {
     type: String,
   },
+  stage_1_img: {
+    type: String,
+  },
+  stage_2_img: {
+    type: String,
+  },
+  stage_3_img: {
+    type: String,
+  },
 });
 
 const UserItem = mongoose.model("UserItem", userItemSchema);
