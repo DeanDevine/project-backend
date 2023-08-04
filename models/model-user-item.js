@@ -22,6 +22,12 @@ const userItemSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  item_img: {
+    type: String,
+  },
+  item_type: {
+    type: String,
+  },
 });
 
 const UserItem = mongoose.model("UserItem", userItemSchema);

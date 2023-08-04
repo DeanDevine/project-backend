@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/package/express-async-handler
 const User = require("../models/model-user");
 const ShopItem = require("../models/model-shop-item");
+const UserItem = require("../models/model-user-item");
 
 // GET ALL USERS
 
@@ -35,44 +36,192 @@ const getUser = asyncHandler(async (req, res) => {
 const createUser = asyncHandler(async (req, res) => {
   try {
     const user = await User.create(req.body);
-    const seed = [
+    const seedShopItems = [
       {
-        item_name: "Lemon",
-        description: "item description 1",
-        price: 1,
-        quantity: 0,
+        item_name: "Carrot",
+        description: "DESCRIPTION",
+        price: 10,
+        quantity: 10,
         username: user.username,
+        item_img: "URL",
+        item_type: "Food",
       },
       {
-        item_name: "Orange",
-        description: "item description 2",
+        item_name: "Pumpkin",
+        description: "DESCRIPTION",
+        price: 20,
+        quantity: 5,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Food",
+      },
+      {
+        item_name: "Wheat",
+        description: "DESCRIPTION",
+        price: 6,
+        quantity: 20,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Food",
+      },
+      {
+        item_name: "Corn",
+        description: "DESCRIPTION",
+        price: 6,
+        quantity: 24,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Food",
+      },
+      {
+        item_name: "Mango Sapling",
+        description: "DESCRIPTION",
+        price: 6,
+        quantity: 20,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Seed",
+      },
+      {
+        item_name: "Cherry Sapling",
+        description: "DESCRIPTION",
+        price: 5,
+        quantity: 20,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Seed",
+      },
+      {
+        item_name: "Apple Sapling",
+        description: "DESCRIPTION",
+        price: 2,
+        quantity: 30,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Seed",
+      },
+      {
+        item_name: "Rice",
+        description: "DESCRIPTION",
+        price: 10,
+        quantity: 30,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Food",
+      },
+      {
+        item_name: "Cooking Oil",
+        description: "DESCRIPTION",
+        price: 6,
+        quantity: 40,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Cooking",
+      },
+      {
+        item_name: "Solar Panel",
+        description: "DESCRIPTION",
+        price: 100,
+        quantity: 4,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Home",
+      },
+    ];
+    const seedUserItems = [
+      {
+        item_name: "Carrot",
+        description: "DESCRIPTION",
         price: 5,
         quantity: 1,
         username: user.username,
+        item_img: "URL",
+        item_type: "Food",
       },
       {
-        item_name: "Apple",
-        description: "item description 3",
-        price: 3,
-        quantity: 2,
-        username: user.username,
-      },
-      {
-        item_name: "Banana",
-        description: "item description 4",
-        price: 2,
-        quantity: 3,
-        username: user.username,
-      },
-      {
-        item_name: "Grapes",
-        description: "item description 5",
+        item_name: "Pumpkin",
+        description: "DESCRIPTION",
         price: 10,
-        quantity: 7,
+        quantity: 1,
         username: user.username,
+        item_img: "URL",
+        item_type: "Food",
+      },
+      {
+        item_name: "Wheat",
+        description: "DESCRIPTION",
+        price: 3,
+        quantity: 1,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Food",
+      },
+      {
+        item_name: "Corn",
+        description: "DESCRIPTION",
+        price: 3,
+        quantity: 1,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Food",
+      },
+      {
+        item_name: "Mango Sapling",
+        description: "DESCRIPTION",
+        price: 3,
+        quantity: 1,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Seed",
+      },
+      {
+        item_name: "Cherry Sapling",
+        description: "DESCRIPTION",
+        price: 5,
+        quantity: 1,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Seed",
+      },
+      {
+        item_name: "Apple Sapling",
+        description: "DESCRIPTION",
+        price: 2,
+        quantity: 1,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Seed",
+      },
+      {
+        item_name: "Rice",
+        description: "DESCRIPTION",
+        price: 5,
+        quantity: 1,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Food",
+      },
+      {
+        item_name: "Cooking Oil",
+        description: "DESCRIPTION",
+        price: 3,
+        quantity: 1,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Cooking",
+      },
+      {
+        item_name: "Solar Panel",
+        description: "DESCRIPTION",
+        price: 50,
+        quantity: 0,
+        username: user.username,
+        item_img: "URL",
+        item_type: "Home",
       },
     ];
-    await ShopItem.insertMany(seed);
+    await ShopItem.insertMany(seedShopItems);
+    await UserItem.insertMany(seedUserItems);
     res.status(201).json({ user });
   } catch (err) {
     res.status(500);

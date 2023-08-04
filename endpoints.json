@@ -98,6 +98,8 @@
   },
   "GET /api/useritems/users/:username": {
     "description": "serves an array of all user items for a user specified by username",
+    "queries": ["item_type"],
+    "allowedItem_typeQuery": ["Seed", "Food", "Cooking"],
     "exampleResponse": {
       "items": [
         {
@@ -106,7 +108,8 @@
           "description": "item description 1",
           "price": 11,
           "quantity": 6,
-          "username": "Hannah"
+          "username": "Hannah",
+          "item_type": "item type 1"
         },
         {
           "_id": "64ca50a0ad37cc4ec5e2d37d",
@@ -114,7 +117,8 @@
           "description": "item description 2",
           "price": 30,
           "quantity": 5,
-          "username": "Hannah"
+          "username": "Hannah",
+          "item_type": "item type 1"
         },
         {
           "_id": "64ca50a0ad37cc4ec5e2d37e",
@@ -122,7 +126,8 @@
           "description": "item description 3",
           "price": 5,
           "quantity": 10,
-          "username": "Hannah"
+          "username": "Hannah",
+          "item_type": "item type 1"
         },
         "{...}"
       ]

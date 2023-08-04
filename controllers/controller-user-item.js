@@ -20,11 +20,12 @@ const getUserItems = asyncHandler(async (req, res) => {
 const getUserItemsByUser = asyncHandler(async (req, res) => {
   try {
     const { username } = req.params;
+    const { item_type } = req.query;
     const user = await User.find({ username });
     if (!user.length) {
       throw new Error(`${username} not found`);
     }
-    const userItems = await UserItem.find({ username });
+    const userItems = await UserItem.find({ username, item_type });
     if (!userItems.length) {
       throw new Error(`ERROR`); // CHANGE ERROR
     }
