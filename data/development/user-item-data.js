@@ -5,7 +5,7 @@ const seedUserItems = [
     price: 5,
     quantity: 1,
     username: "Dean",
-    item_img: "URL",
+    item_img: "https://drive.google.com/uc?%export=view&id=16ArW5WNMluQXFg8Tw3Buh14gcvgK1-aI",
     item_type: "Food",
   },
   {
@@ -14,7 +14,7 @@ const seedUserItems = [
     price: 10,
     quantity: 1,
     username: "Dean",
-    item_img: "URL",
+    item_img: "https://drive.google.com/uc?%export=view&id=1c5aeSwTcjiKslb37oMB1KTzFm9Ax7TCS",
     item_type: "Food",
   },
   {
@@ -23,7 +23,7 @@ const seedUserItems = [
     price: 3,
     quantity: 1,
     username: "Dean",
-    item_img: "URL",
+    item_img: "https://drive.google.com/uc?%export=view&id=11dCOfhpta4n3bd1u-1V1ApvRbHTrANQv",
     item_type: "Food",
   },
   {
@@ -32,7 +32,7 @@ const seedUserItems = [
     price: 3,
     quantity: 1,
     username: "Dean",
-    item_img: "URL",
+    item_img: "https://drive.google.com/uc?%export=view&id=1nhECBfxjRMEi2tfaR-l6mC34bN6sKKwt",
     item_type: "Food",
   },
   {
@@ -41,7 +41,7 @@ const seedUserItems = [
     price: 3,
     quantity: 1,
     username: "Dean",
-    item_img: "URL",
+    item_img: "https://drive.google.com/uc?%export=view&id=1uxtgFp7tF4NDqPIGIB-6ipmZ7vZGVUCM",
     item_type: "Seed",
   },
   {
@@ -50,7 +50,7 @@ const seedUserItems = [
     price: 5,
     quantity: 1,
     username: "Dean",
-    item_img: "URL",
+    item_img: "https://drive.google.com/uc?%export=view&id=1OXziX7CIOVg3OpZ3f47n8jxKdFhCh5xI",
     item_type: "Seed",
   },
   {
@@ -59,7 +59,7 @@ const seedUserItems = [
     price: 2,
     quantity: 1,
     username: "Dean",
-    item_img: "URL",
+    item_img: "https://drive.google.com/uc?%export=view&id=1Re9K7UpBK55qfppCUu6fzesin0KWXVIT",
     item_type: "Seed",
   },
   {
@@ -68,7 +68,7 @@ const seedUserItems = [
     price: 5,
     quantity: 1,
     username: "Dean",
-    item_img: "URL",
+    item_img: "https://drive.google.com/uc?%export=view&id=1-MBnucNftOBduzGd9quLCg8T0mzKzdI2",
     item_type: "Food",
   },
   {
@@ -77,7 +77,7 @@ const seedUserItems = [
     price: 3,
     quantity: 1,
     username: "Dean",
-    item_img: "URL",
+    item_img: "https://drive.google.com/uc?%export=view&id=114u_IyajDYImrCl_cL2bJaYTwNW7AU3b",
     item_type: "Cooking",
   },
   {
@@ -86,7 +86,7 @@ const seedUserItems = [
     price: 50,
     quantity: 0,
     username: "Dean",
-    item_img: "URL",
+    item_img: "https://drive.google.com/uc?%export=view&id=1hpXALzBTgwGgqmXFfi9lRRS3Zi1rySdt",
     item_type: "Home",
   },
   {
