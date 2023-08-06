@@ -29,7 +29,7 @@ const shopItemSchema = mongoose.Schema({
     type: String,
   },
   stage_1_img: {
-    type: String
+    type: String,
   },
   stage_2_img: {
     type: String,
