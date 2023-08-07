@@ -60,16 +60,17 @@ const createUserItem = asyncHandler(async (req, res) => {
 const updateUserItem = asyncHandler(async (req, res) => {
   try {
     const { username, item_name } = req.params;
+    let { price, quantity } = req.body;
     const userItem = await UserItem.findOneAndUpdate(
       { username, item_name },
-      req.body
+      { $inc: { price, quantity } },
+      { new: true }
     );
     if (!userItem) {
       res.status(404);
       throw new Error(`${username} or ${item_name} not found`);
     }
-    const updatedItem = await UserItem.find({ username, item_name });
-    res.status(200).json({ item: updatedItem });
+    res.status(200).json({ item: userItem });
   } catch (err) {
     throw new Error(err);
   }

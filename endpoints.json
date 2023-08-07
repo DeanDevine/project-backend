@@ -161,19 +161,16 @@
   "PATCH /api/useritems/:username/:item_name": {
     "description": "patches a user item specified by username and item_name and serves an object of the updated item",
     "exampleRequest": {
-      "item_name": "String",
-      "description": "String",
-      "price": "Number",
-      "quantity": "Number",
-      "username": "String"
+      "price": 2,
+      "quantity": 20
     },
     "exampleResponse": {
       "item": {
         "_id": "64c7f62faf6ea105749979d5",
-        "item_name": "patched_user_item",
-        "description": "patched_item_description",
-        "price": 10,
-        "quantity": 2,
+        "item_name": "user_item",
+        "description": "item_description",
+        "price": 12,
+        "quantity": 22,
         "username": "Lucy"
       }
     }
@@ -263,19 +260,16 @@
   "PATCH /api/shopitems/:username/:item_name": {
     "description": "patches a shop item specified by username and item_name and serves an object of the updated item",
     "exampleRequest": {
-      "item_name": "String",
-      "description": "String",
-      "price": "Number",
-      "quantity": "Number",
-      "username": "String"
+      "price": -10,
+      "quantity": 1
     },
     "exampleResponse": {
       "item": {
         "_id": "64c7f62faf6ea105749979d5",
-        "item_name": "patched_shop_item",
-        "description": "patched_item_description",
-        "price": 20,
-        "quantity": 3,
+        "item_name": "shop_item",
+        "description": "item_description",
+        "price": 10,
+        "quantity": 4,
         "username": "Lucy"
       }
     }

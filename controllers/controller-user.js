@@ -37,7 +37,6 @@ const getUser = asyncHandler(async (req, res) => {
 const createUser = asyncHandler(async (req, res) => {
   try {
     const user = await User.create(req.body);
-    
     await ShopItem.insertMany(newUserShopItems(user));
     await UserItem.insertMany(newUserUserItems(user));
     res.status(201).json({ user });

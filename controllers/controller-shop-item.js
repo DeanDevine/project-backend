@@ -54,16 +54,17 @@ const createShopItem = asyncHandler(async (req, res) => {
 const updateShopItem = asyncHandler(async (req, res) => {
   try {
     const { username, item_name } = req.params;
+    let { price, quantity } = req.body;
     const shopItem = await ShopItem.findOneAndUpdate(
       { username, item_name },
-      req.body
+      { $inc: { price, quantity } },
+      { new: true }
     );
     if (!shopItem) {
       res.status(404);
       throw new Error(`${username} or ${item_name} not found`);
     }
-    const updatedItem = await ShopItem.find({ username, item_name });
-    res.status(200).json({ item: updatedItem });
+    res.status(200).json({ item: shopItem });
   } catch (err) {
     throw new Error(err);
   }

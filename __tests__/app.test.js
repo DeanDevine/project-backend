@@ -224,3 +224,17 @@ describe("POST /api/useritems", () => {
 //       });
 //   });
 // });
+
+describe("PATCH /api/shopitems/:username/:item_name", () => {
+  test.only("200:should update item quantity by given amount and respond with that updated user", () => {
+    return request(app)
+      .patch("/api/shopitems/test_user3/test_Lemon")
+      .send(1)
+      .expect(200)
+      .then(({ body }) => {
+        const { item } = body;
+        expect(item.item_name).toEqual("test_Lemon");
+        expect(item.quantity).toEqual(1);
+      });
+  });
+});
