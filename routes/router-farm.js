@@ -1,13 +1,14 @@
-const express = require("express");
-const {
-  getGridSquares,
-  updateGridSquare,
-} = require("../controllers/controller-farm");
+// const express = require("express");
 
-const farmRouter = express.Router();
+// const {
+//   getGridSquares,
+//   updateGridSquare,
+// } = require("../controllers/controller-farm");
 
-farmRouter.route("/").get(getGridSquares);
+// const farmRouter = express.Router();
 
-farmRouter.route("/:grid_square").patch(updateGridSquare);
+// farmRouter.route("/").get(getGridSquares);
 
-module.exports = farmRouter;
+// farmRouter.route("/:grid_square").patch(updateGridSquare);
+
+// module.exports = farmRouter;
