@@ -9,6 +9,6 @@ const achievementRouter = express.Router();
 
 achievementRouter.route("/:username").get(getAchievements);
 
-achievementRouter.route("/:username/:achievement").patch(updateAchievement);
+achievementRouter.route("/:username/:_id").patch(updateAchievement);
 
 module.exports = achievementRouter;
