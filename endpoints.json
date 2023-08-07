@@ -90,7 +90,9 @@
           "description": "item description",
           "price": 20,
           "quantity": 2,
-          "username": "Hannah"
+          "username": "Hannah",
+          "item_img": "IMG_URL",
+          "item_type": "Cooking"
         },
         "{...}"
       ]
@@ -109,7 +111,8 @@
           "price": 11,
           "quantity": 6,
           "username": "Hannah",
-          "item_type": "item type 1"
+          "item_img": "IMG_URL",
+          "item_type": "Food"
         },
         {
           "_id": "64ca50a0ad37cc4ec5e2d37d",
@@ -118,7 +121,8 @@
           "price": 30,
           "quantity": 5,
           "username": "Hannah",
-          "item_type": "item type 1"
+          "item_img": "IMG_URL",
+          "item_type": "Cooking"
         },
         {
           "_id": "64ca50a0ad37cc4ec5e2d37e",
@@ -127,7 +131,11 @@
           "price": 5,
           "quantity": 10,
           "username": "Hannah",
-          "item_type": "item type 1"
+          "item_img": "IMG_URL",
+          "item_type": "Seed",
+          "stage_1_img": "IMG_URL",
+          "stage_2_img": "IMG_URL",
+          "stage_3_img": "IMG_URL"
         },
         "{...}"
       ]
@@ -142,7 +150,9 @@
         "description": "item description",
         "price": 20,
         "quantity": 2,
-        "username": "Hannah"
+        "username": "Hannah",
+        "item_img": "IMG_URL",
+        "item_type": "Food"
       }
     }
   },
@@ -214,7 +224,9 @@
           "description": "item description 1",
           "price": 20,
           "quantity": 2,
-          "username": "Lucy"
+          "username": "Lucy",
+          "item_img": "IMG_URL",
+          "item_type": "Food"
         },
         {
           "_id": "64ca50a0ad37cc4ec5e2d37g",
@@ -222,7 +234,9 @@
           "description": "item description 2",
           "price": 10,
           "quantity": 5,
-          "username": "Lucy"
+          "username": "Lucy",
+          "item_img": "IMG_URL",
+          "item_type": "Cooking"
         },
         {
           "_id": "64ca50a0ad37cc4ec5e2d37h",
@@ -230,7 +244,12 @@
           "description": "item description 3",
           "price": 40,
           "quantity": 4,
-          "username": "Lucy"
+          "username": "Lucy",
+          "item_img": "IMG_URL",
+          "item_type": "Seed",
+          "stage_1_img": "IMG_URL",
+          "stage_2_img": "IMG_URL",
+          "stage_3_img": "IMG_URL"
         },
         "{...}"
       ]
@@ -245,7 +264,12 @@
         "description": "item description",
         "price": 40,
         "quantity": 7,
-        "username": "Hannah"
+        "username": "Hannah",
+        "item_img": "IMG_URL",
+        "item_type": "Seed",
+        "stage_1_img": "IMG_URL",
+        "stage_2_img": "IMG_URL",
+        "stage_3_img": "IMG_URL"
       }
     }
   },
@@ -291,5 +315,44 @@
   },
   "DELETE /api/shopitems/:id": {
     "description": "deletes a shop item specified by item _id and responds with status 204 - No Content"
+  },
+  "GET /api/farm": {
+    "description": "serves an array of all farm grid squares in the database",
+    "exampleResponse": {
+      "gridSquares": [
+        {
+          "_id": "64c7bd2dc612cf6fcd492d99",
+          "grid_square": 0,
+          "planted": true,
+          "state": "",
+          "stage": 1
+        },
+        {
+          "_id": "64c7bd2dc612cf6fcd492d99",
+          "grid_square": 1,
+          "planted": false,
+          "state": "",
+          "stage": 0
+        },
+        "{...}"
+      ]
+    }
+  },
+  "PATCH /api/farm/:grid_square": {
+    "description": "patches a farm grid square specified by grid_square and serves an object of the updated grid square",
+    "exampleRequest": {
+      "grid_square": 1,
+      "planted": true,
+      "state": "patched_state",
+      "stage": 3
+    },
+    "exampleResponse": {
+      "gridSquare": {
+        "grid_square": 1,
+        "planted": true,
+        "state": "patched_state",
+        "stage": 3
+      }
+    }
   }
 }
