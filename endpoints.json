@@ -161,7 +161,6 @@
   "PATCH /api/useritems/:username/:item_name": {
     "description": "patches a user item specified by username and item_name and serves an object of the updated item",
     "exampleRequest": {
-      "price": 2,
       "quantity": 20
     },
     "exampleResponse": {
@@ -169,7 +168,7 @@
         "_id": "64c7f62faf6ea105749979d5",
         "item_name": "user_item",
         "description": "item_description",
-        "price": 12,
+        "price": 10,
         "quantity": 22,
         "username": "Lucy"
       }
@@ -260,16 +259,15 @@
   "PATCH /api/shopitems/:username/:item_name": {
     "description": "patches a shop item specified by username and item_name and serves an object of the updated item",
     "exampleRequest": {
-      "price": -10,
-      "quantity": 1
+      "quantity": -1
     },
     "exampleResponse": {
       "item": {
         "_id": "64c7f62faf6ea105749979d5",
         "item_name": "shop_item",
         "description": "item_description",
-        "price": 10,
-        "quantity": 4,
+        "price": 20,
+        "quantity": 3,
         "username": "Lucy"
       }
     }

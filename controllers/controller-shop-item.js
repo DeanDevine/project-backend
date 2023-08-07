@@ -54,10 +54,10 @@ const createShopItem = asyncHandler(async (req, res) => {
 const updateShopItem = asyncHandler(async (req, res) => {
   try {
     const { username, item_name } = req.params;
-    let { price, quantity } = req.body;
+    let { quantity } = req.body;
     const shopItem = await ShopItem.findOneAndUpdate(
       { username, item_name },
-      { $inc: { price, quantity } },
+      { $inc: { quantity } },
       { new: true }
     );
     if (!shopItem) {

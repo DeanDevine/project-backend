@@ -60,10 +60,10 @@ const createUserItem = asyncHandler(async (req, res) => {
 const updateUserItem = asyncHandler(async (req, res) => {
   try {
     const { username, item_name } = req.params;
-    let { price, quantity } = req.body;
+    let { quantity } = req.body;
     const userItem = await UserItem.findOneAndUpdate(
       { username, item_name },
-      { $inc: { price, quantity } },
+      { $inc: { quantity } },
       { new: true }
     );
     if (!userItem) {
