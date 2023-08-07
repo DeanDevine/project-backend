@@ -2,22 +2,9 @@ const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/
 const ShopItem = require("../models/model-shop-item");
 const User = require("../models/model-user");
 
-// GET ALL SHOP ITEMS
-
-const getShopItems = asyncHandler(async (req, res) => {
-  try {
-    const shopItems = await ShopItem.find({});
-    res.status(200).json({ items: shopItems });
-  } catch (err) {
-    res.status(500);
-    throw new Error(err); // WITH ERROR MIDDLEWARE
-    // res.status(500).json({ message: err.message }); // WITHOUT ERROR MIDDLEWARE
-  }
-});
-
 // GET SHOP ITEMS BY USERNAME
 
-const getShopItemsByUser = asyncHandler(async (req, res) => {
+const getShopItems = asyncHandler(async (req, res) => {
   try {
     const { username } = req.params;
     const user = await User.find({ username });
@@ -34,15 +21,15 @@ const getShopItemsByUser = asyncHandler(async (req, res) => {
   }
 });
 
-// GET SHOP ITEM BY ITEM ID
+// GET SHOP ITEM BY USERNAME AND ITEM_NAME
 
 const getShopItem = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.params;
-    const shopItem = await ShopItem.findById(id);
-    if (!shopItem) {
+    const { username, item_name } = req.params;
+    const shopItem = await ShopItem.find({ username, item_name });
+    if (!shopItem.length) {
       res.status(404);
-      throw new Error(`${id} not found`);
+      throw new Error(`${username} or ${item_name} not found`);
     }
     res.status(200).json({ item: shopItem });
   } catch (err) {
@@ -62,32 +49,35 @@ const createShopItem = asyncHandler(async (req, res) => {
   }
 });
 
-// PATCH SHOP ITEM BY ITEM ID
+// PATCH SHOP ITEM BY USERNAME AND ITEM_NAME
 
 const updateShopItem = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.params;
-    const shopItem = await ShopItem.findByIdAndUpdate(id, req.body);
+    const { username, item_name } = req.params;
+    const shopItem = await ShopItem.findOneAndUpdate(
+      { username, item_name },
+      req.body
+    );
     if (!shopItem) {
       res.status(404);
-      throw new Error(`${id} not found`);
+      throw new Error(`${username} or ${item_name} not found`);
     }
-    const updatedItem = await ShopItem.findById(id);
+    const updatedItem = await ShopItem.find({ username, item_name });
     res.status(200).json({ item: updatedItem });
   } catch (err) {
     throw new Error(err);
   }
 });
 
-// DELETE SHOP ITEM BY ITEM ID
+// DELETE SHOP ITEM BY USERNAME AND ITEM_NAME
 
 const deleteShopItem = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.params;
-    const shopItem = await ShopItem.findByIdAndDelete(id);
+    const { username, item_name } = req.params;
+    const shopItem = await ShopItem.findOneAndDelete({ username, item_name });
     if (!shopItem) {
       res.status(404);
-      throw new Error(`${id} not found`);
+      throw new Error(`${username} or ${item_name} not found`);
     }
     res.status(204).send();
   } catch (err) {
@@ -97,7 +87,6 @@ const deleteShopItem = asyncHandler(async (req, res) => {
 
 module.exports = {
   getShopItems,
-  getShopItemsByUser,
   getShopItem,
   createShopItem,
   updateShopItem,

@@ -80,25 +80,7 @@
   "DELETE /api/users/:username": {
     "description": "deletes a user specified by username and responds with status 204 - No Content"
   },
-  "GET /api/useritems": {
-    "description": "serves an array of all user items for all users in the database",
-    "exampleResponse": {
-      "items": [
-        {
-          "_id": "64c7bd2dc612cf6fcd492da0",
-          "item_name": "item name",
-          "description": "item description",
-          "price": 20,
-          "quantity": 2,
-          "username": "Hannah",
-          "item_img": "IMG_URL",
-          "item_type": "Cooking"
-        },
-        "{...}"
-      ]
-    }
-  },
-  "GET /api/useritems/users/:username": {
+  "GET /api/useritems/:username": {
     "description": "serves an array of all user items for a user specified by username",
     "queries": ["item_type"],
     "allowedItem_typeQuery": ["Seed", "Food", "Cooking"],
@@ -141,8 +123,8 @@
       ]
     }
   },
-  "GET /api/useritems/:id": {
-    "description": "serves an object of a user item specified by item _id",
+  "GET /api/useritems/:username/:item_name": {
+    "description": "serves an object of a user item specified by username and item_name",
     "exampleResponse": {
       "item": {
         "_id": "64c7bd2dc612cf6fcd492da0",
@@ -176,8 +158,8 @@
       }
     }
   },
-  "PATCH /api/useritems/:id": {
-    "description": "patches a user item specified by item _id and serves an object of the updated item",
+  "PATCH /api/useritems/:username/:item_name": {
+    "description": "patches a user item specified by username and item_name and serves an object of the updated item",
     "exampleRequest": {
       "item_name": "String",
       "description": "String",
@@ -196,25 +178,10 @@
       }
     }
   },
-  "DELETE /api/useritems/:id": {
-    "description": "deletes an item specified by item _id and responds with status 204 - No Content"
+  "DELETE /api/useritems/:username/:item_name": {
+    "description": "deletes an item specified by username and item_name and responds with status 204 - No Content"
   },
-  "GET /api/shopitems": {
-    "description": "serves an array of all shop items for all users in the database",
-    "exampleResponse": {
-      "items": [
-        {
-          "_id": "64c7bd2dc612cf6fcd492da0",
-          "item_name": "item name",
-          "description": "item description",
-          "price": 40,
-          "quantity": 7
-        },
-        "{...}"
-      ]
-    }
-  },
-  "GET /api/shopitems/users/:username": {
+  "GET /api/shopitems/:username": {
     "description": "serves an array of all shop items for a user specified by username",
     "exampleResponse": {
       "items": [
@@ -255,8 +222,8 @@
       ]
     }
   },
-  "GET /api/shopitems/:id": {
-    "description": "serves an object of a shop item specified by item _id",
+  "GET /api/shopitems/:username/:item_name": {
+    "description": "serves an object of a shop item specified by username and item_name",
     "exampleResponse": {
       "item": {
         "_id": "64c7bd2dc612cf6fcd492da0",
@@ -293,8 +260,8 @@
       }
     }
   },
-  "PATCH /api/shopitems/:id": {
-    "description": "patches a shop item specified by item _id and serves an object of the updated item",
+  "PATCH /api/shopitems/:username/:item_name": {
+    "description": "patches a shop item specified by username and item_name and serves an object of the updated item",
     "exampleRequest": {
       "item_name": "String",
       "description": "String",
@@ -313,11 +280,11 @@
       }
     }
   },
-  "DELETE /api/shopitems/:id": {
-    "description": "deletes a shop item specified by item _id and responds with status 204 - No Content"
+  "DELETE /api/shopitems/:username/:item_name": {
+    "description": "deletes a shop item specified by username and item_name and responds with status 204 - No Content"
   },
-  "GET /api/farm": {
-    "description": "serves an array of all farm grid squares in the database",
+  "GET /api/farm/:username": {
+    "description": "serves an array of all farm grid squares for a user specified by username",
     "exampleResponse": {
       "gridSquares": [
         {
@@ -338,8 +305,8 @@
       ]
     }
   },
-  "PATCH /api/farm/:grid_square": {
-    "description": "patches a farm grid square specified by grid_square and serves an object of the updated grid square",
+  "PATCH /api/farm/:username/:grid_square": {
+    "description": "patches a farm grid square specified by username and grid_square and serves an object of the updated grid square",
     "exampleRequest": {
       "grid_square": 1,
       "planted": true,

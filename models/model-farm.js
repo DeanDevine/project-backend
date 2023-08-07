@@ -14,6 +14,9 @@ const farmSchema = mongoose.Schema({
   stage: {
     type: Number,
   },
+  username: {
+    type: String,
+  }
 });
 
 const Farm = mongoose.model("Farm", farmSchema);

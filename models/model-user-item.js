@@ -37,6 +37,9 @@ const userItemSchema = mongoose.Schema({
   stage_3_img: {
     type: String,
   },
+  reference: {
+    type: String,
+  }
 });
 
 const UserItem = mongoose.model("UserItem", userItemSchema);

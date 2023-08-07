@@ -6,19 +6,18 @@ const {
   createShopItem,
   updateShopItem,
   deleteShopItem,
-  getShopItemsByUser,
 } = require("../controllers/controller-shop-item");
 
 const shopItemRouter = express.Router();
 
-shopItemRouter.route("/").get(getShopItems).post(createShopItem);
+shopItemRouter.route("/").post(createShopItem);
+
+shopItemRouter.route("/:username").get(getShopItems);
 
 shopItemRouter
-  .route("/:id")
+  .route("/:username/:item_name")
   .get(getShopItem)
   .patch(updateShopItem)
   .delete(deleteShopItem);
-
-shopItemRouter.route("/users/:username").get(getShopItemsByUser);
 
 module.exports = shopItemRouter;

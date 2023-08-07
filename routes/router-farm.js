@@ -7,8 +7,8 @@ const {
 
 const farmRouter = express.Router();
 
-farmRouter.route("/").get(getGridSquares);
+farmRouter.route("/:username").get(getGridSquares);
 
-farmRouter.route("/:grid_square").patch(updateGridSquare);
+farmRouter.route("/:username/:grid_square").patch(updateGridSquare);
 
 module.exports = farmRouter;

@@ -2,22 +2,9 @@ const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/
 const UserItem = require("../models/model-user-item");
 const User = require("../models/model-user");
 
-// GET ALL USER ITEMS
+// GET USER ITEMS BY USERNAME
 
 const getUserItems = asyncHandler(async (req, res) => {
-  try {
-    const userItems = await UserItem.find({});
-    res.status(200).json({ items: userItems });
-  } catch (err) {
-    res.status(500);
-    throw new Error(err); // WITH ERROR MIDDLEWARE
-    // res.status(500).json({ message: err.message }); // WITHOUT ERROR MIDDLEWARE
-  }
-});
-
-// GET ALL USER ITEMS BY USERNAME
-
-const getUserItemsByUser = asyncHandler(async (req, res) => {
   try {
     const { username } = req.params;
     const { item_type } = req.query;
@@ -40,15 +27,15 @@ const getUserItemsByUser = asyncHandler(async (req, res) => {
   }
 });
 
-// GET USER ITEM BY ITEM ID
+// GET USER ITEM BY USERNAME AND ITEM_NAME
 
 const getUserItem = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.params;
-    const userItem = await UserItem.findById(id);
-    if (!userItem) {
+    const { username, item_name } = req.params;
+    const userItem = await UserItem.find({ username, item_name });
+    if (!userItem.length) {
       res.status(404);
-      throw new Error(`${id} not found`);
+      throw new Error(`${username} or ${item_name} not found`);
     }
     res.status(200).json({ item: userItem });
   } catch (err) {
@@ -68,32 +55,35 @@ const createUserItem = asyncHandler(async (req, res) => {
   }
 });
 
-// PATCH USER ITEM BY ITEM ID
+// PATCH USER ITEM BY USERNAME AND ITEM_NAME
 
 const updateUserItem = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.params;
-    const userItem = await UserItem.findByIdAndUpdate(id, req.body);
+    const { username, item_name } = req.params;
+    const userItem = await UserItem.findOneAndUpdate(
+      { username, item_name },
+      req.body
+    );
     if (!userItem) {
       res.status(404);
-      throw new Error(`${id} not found`);
+      throw new Error(`${username} or ${item_name} not found`);
     }
-    const updatedItem = await UserItem.findById(id);
+    const updatedItem = await UserItem.find({ username, item_name });
     res.status(200).json({ item: updatedItem });
   } catch (err) {
     throw new Error(err);
   }
 });
 
-// DELETE USER ITEM BY ITEM ID
+// DELETE USER ITEM BY USERNAME AND ITEM_NAMTEM IDE
 
 const deleteUserItem = asyncHandler(async (req, res) => {
   try {
-    const { id } = req.params;
-    const userItem = await UserItem.findByIdAndDelete(id);
+    const { username, item_name } = req.params;
+    const userItem = await UserItem.findOneAndDelete({ username, item_name });
     if (!userItem) {
       res.status(404);
-      throw new Error(`${id} not found`);
+      throw new Error(`${username} or ${item_name} not found`);
     }
     res.status(204).send();
   } catch (err) {
@@ -103,7 +93,6 @@ const deleteUserItem = asyncHandler(async (req, res) => {
 
 module.exports = {
   getUserItems,
-  getUserItemsByUser,
   getUserItem,
   createUserItem,
   updateUserItem,
