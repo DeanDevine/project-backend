@@ -3,7 +3,7 @@ const User = require("../models/model-user");
 const ShopItem = require("../models/model-shop-item");
 const UserItem = require("../models/model-user-item");
 const Farm = require("../models/model-farm");
-const Achievements = require("../models/model-achievement");
+const Achievement = require("../models/model-achievement");
 const {
   newUserShopItems,
   newUserUserItems,
@@ -47,7 +47,7 @@ const createUser = asyncHandler(async (req, res) => {
     await ShopItem.insertMany(newUserShopItems(user));
     await UserItem.insertMany(newUserUserItems(user));
     await Farm.insertMany(newUserFarm(user));
-    await Achievements.insertMany(newUserAchievements(user));
+    await Achievement.insertMany(newUserAchievements(user));
     res.status(201).json({ user });
   } catch (err) {
     res.status(500);
@@ -89,7 +89,7 @@ const deleteUser = asyncHandler(async (req, res) => {
     await ShopItem.deleteMany({ username });
     await UserItem.deleteMany({ username });
     await Farm.deleteMany({ username });
-    await Achievements.deleteMany({ username });
+    await Achievement.deleteMany({ username });
     res.status(204).send();
   } catch (err) {
     throw new Error(err);

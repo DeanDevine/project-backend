@@ -14,7 +14,7 @@ const achievementSchema = mongoose.Schema({
     type: Boolean,
   },
   date: {
-    type: Object,
+    type: String,
   },
   username: {
     type: String,
