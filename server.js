@@ -1,12 +1,12 @@
 require("dotenv").config();
 const express = require("express");
-const getApi = require("./controllers/controller-api");
+const { getApi } = require("./controllers/controller-api");
 const shopItemRouter = require("./routes/router-shop-item");
 const userRouter = require("./routes/router-user");
 const userItemRouter = require("./routes/router-user-item");
 const errorMiddleware = require("./middleware/middleware-error");
 const cors = require("cors");
-// const farmRouter = require("./routes/router-farm");
+const farmRouter = require("./routes/router-farm");
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.use("/api/shopitems", shopItemRouter);
 
 app.use("/api/useritems", userItemRouter);
 
-// app.use("/api/farm", farmRouter);
+app.use("/api/farm", farmRouter);
 
 // ERROR MIDDLEWARE
 
