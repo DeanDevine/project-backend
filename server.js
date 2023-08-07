@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const { getApi } = require("./controllers/controller-api");
+const getApi = require("./controllers/controller-api");
 const shopItemRouter = require("./routes/router-shop-item");
 const userRouter = require("./routes/router-user");
 const userItemRouter = require("./routes/router-user-item");
