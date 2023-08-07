@@ -1,21 +1,21 @@
 const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/package/express-async-handler
-const Farm = require("../models/model-farm");
+const Achievement = require("../models/model-achievement");
 const User = require("../models/model-user");
 
 // GET GRID SQUARES BY USERNAME
 
-const getGridSquares = asyncHandler(async (req, res) => {
+const getAchievements = asyncHandler(async (req, res) => {
   try {
     const { username } = req.params;
     const user = await User.find({ username });
     if (!user.length) {
       throw new Error(`${username} not found`);
     }
-    const gridSquares = await Farm.find({ username });
-    if (!gridSquares.length) {
+    const achievements = await Achievement.find({ username });
+    if (!achievements.length) {
       throw new Error(`ERROR`); // CHANGE ERROR
     }
-    res.status(200).json({ gridSquares });
+    res.status(200).json({ achievements });
   } catch (err) {
     throw new Error(err);
   }
@@ -23,23 +23,23 @@ const getGridSquares = asyncHandler(async (req, res) => {
 
 // PATCH GRID SQUARE BY USERNAME AND GRID_SQUARE
 
-const updateGridSquare = asyncHandler(async (req, res) => {
+const updateAchievement = asyncHandler(async (req, res) => {
   try {
-    const { username, grid_square } = req.params;
+    const { id } = req.params;
     const body = req.body;
-    const gridSquare = await Farm.findOneAndUpdate(
-      { username, grid_square },
+    const achievement = await Achievement.findOneAndUpdate(
+      { id },
       { $set: body },
       { new: true }
     );
-    if (!gridSquare) {
+    if (!achievement) {
       res.status(404);
-      throw new Error(`${username} or ${gridSquare} not found`);
+      throw new Error(`${achievement} not found`);
     }
-    res.status(200).json({ gridSquare });
+    res.status(200).json({ achievement });
   } catch (err) {
     throw new Error(err);
   }
 });
 
-module.exports = { getGridSquares, updateGridSquare };
+module.exports = { getAchievements, updateAchievement };

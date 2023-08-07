@@ -2,7 +2,14 @@ const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/
 const User = require("../models/model-user");
 const ShopItem = require("../models/model-shop-item");
 const UserItem = require("../models/model-user-item");
-const { newUserShopItems, newUserUserItems } = require("../data/development/new-user-data");
+const Farm = require("../models/model-farm");
+const Achievements = require("../models/model-achievement");
+const {
+  newUserShopItems,
+  newUserUserItems,
+  newUserFarm,
+  newUserAchievements,
+} = require("../data/development/new-user-data");
 
 // GET ALL USERS
 
@@ -39,6 +46,8 @@ const createUser = asyncHandler(async (req, res) => {
     const user = await User.create(req.body);
     await ShopItem.insertMany(newUserShopItems(user));
     await UserItem.insertMany(newUserUserItems(user));
+    await Farm.insertMany(newUserFarm(user));
+    await Achievements.insertMany(newUserAchievements(user));
     res.status(201).json({ user });
   } catch (err) {
     res.status(500);
@@ -78,6 +87,9 @@ const deleteUser = asyncHandler(async (req, res) => {
       throw new Error(`User ${username} not found`);
     }
     await ShopItem.deleteMany({ username });
+    await UserItem.deleteMany({ username });
+    await Farm.deleteMany({ username });
+    await Achievements.deleteMany({ username });
     res.status(204).send();
   } catch (err) {
     throw new Error(err);

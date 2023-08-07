@@ -3,7 +3,6 @@ const mongoose = require("../connection");
 const farmSchema = mongoose.Schema({
   grid_square: {
     type: Number,
-    required: true,
   },
   planted: {
     type: Boolean,
@@ -16,7 +15,7 @@ const farmSchema = mongoose.Schema({
   },
   username: {
     type: String,
-  }
+  },
 });
 
 const Farm = mongoose.model("Farm", farmSchema);
