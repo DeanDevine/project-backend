@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler"); // https://www.npmjs.com/package/express-async-handler
-const Achievement = require("../models/model-achievement");
 const User = require("../models/model-user");
+const Achievement = require("../models/model-achievement");
 
 // GET GRID SQUARES BY USERNAME
 
