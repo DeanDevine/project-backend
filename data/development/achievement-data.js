@@ -15,7 +15,7 @@ const seedAchievements = [
     image:
       "https://drive.google.com/uc?export=view&id=1QSbDGbBpRHbQX-AvZKBs7x5AzVBblIuZ",
     progress: 0,
-    acquired: false,
+    acquired: true,
     date: "",
     username: "Hannah",
   },
@@ -35,7 +35,7 @@ const seedAchievements = [
     image:
       "https://drive.google.com/uc?export=view&id=1QSbDGbBpRHbQX-AvZKBs7x5AzVBblIuZ",
     progress: 0,
-    acquired: false,
+    acquired: true,
     date: "",
     username: "Hannah",
   },

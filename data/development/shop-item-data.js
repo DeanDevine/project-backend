@@ -24,6 +24,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=11-l9tE5z5iwhdTWulbD9bLpAiJmTJxqV",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1ZAUk1lsps6z2IiR-GFsLM50k_pxBoLSg",
+    reference: "Carrot",
   },
   {
     item_name: "Pumpkin",
@@ -50,6 +51,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=11-l9tE5z5iwhdTWulbD9bLpAiJmTJxqV",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=19uXQYIn8RiGOenwKRBK5MQwS_5oh2sbQ",
+    reference: "Pumpkin",
   },
   {
     item_name: "Wheat",
@@ -76,6 +78,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1KCDV1tY-u_zeON20fsvocVVxIG-pmbMk",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1O5tGyeWr-CRBJs2GVLhLn4ieqxssyZ65",
+    reference: "Wheat",
   },
   {
     item_name: "Corn",
@@ -102,6 +105,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1b1v24MNOLlNSlXiYHsOApJgLR9xw9Dox",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1KpGfLBS4-aKL_iQTvjTOTlIisLk9KUj9",
+    reference: "Corn",
   },
   {
     item_name: "Mango Sapling",
@@ -118,6 +122,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1Xppi8w8zxQ7e89SMVf0dsrJRB4uosW7K",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1ykGuMa9pZyomQDj_PHOCYF5UKjVlWR6Q",
+    reference: "Mango",
   },
   {
     item_name: "Cherry Sapling",
@@ -134,6 +139,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1Ib1oI9a4nZ74xrRc4xOa22UEbt6lPpZC",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1dn1CA8g_z0CfmeoA38QrtZDabMsa3SLT",
+    reference: "Cherry",
   },
   {
     item_name: "Apple Sapling",
@@ -150,6 +156,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1QUsprbfPwlmPVZdOl-yv26SBpSwGeqiy",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1fieclKRtB9eLnCgcC-4KwyUGbvexqhyf",
+    reference: "Apple",
   },
   {
     item_name: "Rice",
@@ -176,6 +183,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1xpk1Bw85G6K2_UjupIhkNfWuApOCnQLN",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1Lk6-e_x_OAbkeJUjAbC6GnbTqLxot5Lc",
+    reference: "Rice",
   },
   {
     item_name: "Cooking Oil",
@@ -222,6 +230,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=11-l9tE5z5iwhdTWulbD9bLpAiJmTJxqV",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1ZAUk1lsps6z2IiR-GFsLM50k_pxBoLSg",
+    reference: "Carrot",
   },
   {
     item_name: "Pumpkin",
@@ -248,6 +257,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=11-l9tE5z5iwhdTWulbD9bLpAiJmTJxqV",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=19uXQYIn8RiGOenwKRBK5MQwS_5oh2sbQ",
+    reference: "Pumpkin",
   },
   {
     item_name: "Wheat",
@@ -274,6 +284,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1KCDV1tY-u_zeON20fsvocVVxIG-pmbMk",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1O5tGyeWr-CRBJs2GVLhLn4ieqxssyZ65",
+    reference: "Wheat",
   },
   {
     item_name: "Corn",
@@ -300,6 +311,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1b1v24MNOLlNSlXiYHsOApJgLR9xw9Dox",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1KpGfLBS4-aKL_iQTvjTOTlIisLk9KUj9",
+    reference: "Corn",
   },
   {
     item_name: "Mango Sapling",
@@ -316,6 +328,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1Xppi8w8zxQ7e89SMVf0dsrJRB4uosW7K",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1ykGuMa9pZyomQDj_PHOCYF5UKjVlWR6Q",
+    reference: "Mango",
   },
   {
     item_name: "Cherry Sapling",
@@ -332,6 +345,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1Ib1oI9a4nZ74xrRc4xOa22UEbt6lPpZC",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1dn1CA8g_z0CfmeoA38QrtZDabMsa3SLT",
+    reference: "Cherry",
   },
   {
     item_name: "Apple Sapling",
@@ -348,6 +362,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1QUsprbfPwlmPVZdOl-yv26SBpSwGeqiy",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1fieclKRtB9eLnCgcC-4KwyUGbvexqhyf",
+    reference: "Apple",
   },
   {
     item_name: "Rice",
@@ -374,6 +389,7 @@ const seedShopItems = [
       "https://drive.google.com/uc?export=view&id=1xpk1Bw85G6K2_UjupIhkNfWuApOCnQLN",
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1Lk6-e_x_OAbkeJUjAbC6GnbTqLxot5Lc",
+    reference: "Rice",
   },
   {
     item_name: "Cooking Oil",
