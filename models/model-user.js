@@ -24,6 +24,10 @@ const userSchema = mongoose.Schema({
     type: Number,
     default: 100,
   },
+  hunger: {
+    type: Number,
+    default: 100
+  }
 });
 
 const User = mongoose.model("User", userSchema);
