@@ -39,6 +39,9 @@ const userItemSchema = mongoose.Schema({
   },
   reference: {
     type: String,
+  },
+  hunger: {
+    type: Number
   }
 });
 

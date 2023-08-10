@@ -8,6 +8,7 @@ const seedUserItems = [
     item_img:
       "https://drive.google.com/uc?export=view&id=1ZAUk1lsps6z2IiR-GFsLM50k_pxBoLSg",
     item_type: "Food",
+    hunger: 5,
   },
   {
     item_name: "Carrot Seeds",
@@ -35,6 +36,7 @@ const seedUserItems = [
     item_img:
       "https://drive.google.com/uc?export=view&id=19uXQYIn8RiGOenwKRBK5MQwS_5oh2sbQ",
     item_type: "Food",
+    hunger: 10,
   },
   {
     item_name: "Pumpkin Seeds",
@@ -57,11 +59,12 @@ const seedUserItems = [
     item_name: "Wheat",
     description: "DESCRIPTION",
     price: 3,
-    quantity: 3,
+    quantity: 10,
     username: "Hannah",
     item_img:
       "https://drive.google.com/uc?export=view&id=1O5tGyeWr-CRBJs2GVLhLn4ieqxssyZ65",
     item_type: "Food",
+    hunger: 3,
   },
   {
     item_name: "Wheat Kernels",
@@ -89,6 +92,7 @@ const seedUserItems = [
     item_img:
       "https://drive.google.com/uc?export=view&id=1KpGfLBS4-aKL_iQTvjTOTlIisLk9KUj9",
     item_type: "Food",
+    hunger: 4,
   },
   {
     item_name: "Corn Kernels",
@@ -123,6 +127,7 @@ const seedUserItems = [
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1ykGuMa9pZyomQDj_PHOCYF5UKjVlWR6Q",
     reference: "Mango",
+    hunger: 6,
   },
   {
     item_name: "Cherry Sapling",
@@ -140,6 +145,7 @@ const seedUserItems = [
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1dn1CA8g_z0CfmeoA38QrtZDabMsa3SLT",
     reference: "Cherry",
+    hunger: 2,
   },
   {
     item_name: "Apple Sapling",
@@ -157,6 +163,7 @@ const seedUserItems = [
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1fieclKRtB9eLnCgcC-4KwyUGbvexqhyf",
     reference: "Apple",
+    hunger: 2,
   },
   {
     item_name: "Rice",
@@ -167,6 +174,7 @@ const seedUserItems = [
     item_img:
       "https://drive.google.com/uc?export=view&id=1Lk6-e_x_OAbkeJUjAbC6GnbTqLxot5Lc",
     item_type: "Food",
+    hunger: 3,
   },
   {
     item_name: "Rice Seeds",
@@ -214,6 +222,7 @@ const seedUserItems = [
     item_img:
       "https://drive.google.com/uc?export=view&id=1ZAUk1lsps6z2IiR-GFsLM50k_pxBoLSg",
     item_type: "Food",
+    hunger: 5,
   },
   {
     item_name: "Carrot Seeds",
@@ -241,6 +250,7 @@ const seedUserItems = [
     item_img:
       "https://drive.google.com/uc?export=view&id=19uXQYIn8RiGOenwKRBK5MQwS_5oh2sbQ",
     item_type: "Food",
+    hunger: 10,
   },
   {
     item_name: "Pumpkin Seeds",
@@ -263,11 +273,12 @@ const seedUserItems = [
     item_name: "Wheat",
     description: "DESCRIPTION",
     price: 3,
-    quantity: 3,
+    quantity: 10,
     username: "Lucy",
     item_img:
       "https://drive.google.com/uc?export=view&id=1O5tGyeWr-CRBJs2GVLhLn4ieqxssyZ65",
     item_type: "Food",
+    hunger: 3,
   },
   {
     item_name: "Wheat Kernels",
@@ -295,6 +306,7 @@ const seedUserItems = [
     item_img:
       "https://drive.google.com/uc?export=view&id=1KpGfLBS4-aKL_iQTvjTOTlIisLk9KUj9",
     item_type: "Food",
+    hunger: 4,
   },
   {
     item_name: "Corn Kernels",
@@ -329,6 +341,7 @@ const seedUserItems = [
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1ykGuMa9pZyomQDj_PHOCYF5UKjVlWR6Q",
     reference: "Mango",
+    hunger: 6,
   },
   {
     item_name: "Cherry Sapling",
@@ -346,6 +359,7 @@ const seedUserItems = [
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1dn1CA8g_z0CfmeoA38QrtZDabMsa3SLT",
     reference: "Cherry",
+    hunger: 2,
   },
   {
     item_name: "Apple Sapling",
@@ -363,6 +377,7 @@ const seedUserItems = [
     stage_3_img:
       "https://drive.google.com/uc?export=view&id=1fieclKRtB9eLnCgcC-4KwyUGbvexqhyf",
     reference: "Apple",
+    hunger: 2,
   },
   {
     item_name: "Rice",
@@ -373,6 +388,7 @@ const seedUserItems = [
     item_img:
       "https://drive.google.com/uc?export=view&id=1Lk6-e_x_OAbkeJUjAbC6GnbTqLxot5Lc",
     item_type: "Food",
+    hunger: 3,
   },
   {
     item_name: "Rice Seeds",
